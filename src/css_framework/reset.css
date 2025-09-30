@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: hsla(0, 0%, 100%, 0);
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    transition: all 0.2s ease-in;
+    display: block;
+    box-sizing: border-box;
+
+    max-width: 100%;
+    height: auto;
+	overflow: hidden;
+
+    list-style: none;
+}
+
+head{
+    display: none;
+}
