@@ -1,0 +1,18 @@
+.--container{
+	display: flex;
+	background-color: blueviolet;
+	padding: 1em;
+	height: ;
+	width: 100vw;
+}
+
+.--row-1{
+	background-color: rgba(100,0, 0, 0.2);
+	border: solid 3px;
+	height: 8.333%;
+	margin-top: 8.3333%;
+}
+
+.--row-1:nth-last-child(1){
+	background-color:  rgba(10,10, 10, 0.2);
+}
