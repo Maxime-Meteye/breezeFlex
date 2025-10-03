@@ -1,0 +1,11 @@
+body{
+	background-color: aqua;
+	section{
+		background-color: bisque;
+	}
+}
+@for $i from 1 through 3 {
+	.--margin#{$i}{
+		margin-left: 10px*$i;
+	}
+}
