@@ -1,7 +1,7 @@
 
 //##Debug value
 
-$debug: false;
+$debug: true;
 
 //#Include somewhere to see if sass reaches there
 
@@ -13,8 +13,6 @@ $debug: false;
 	}
 }
 
-
-
 //## Styling
 
 body{
@@ -25,7 +23,7 @@ body{
 }
 
 
-.--container {
+.container {
 	display: flex;
 	flex-wrap: wrap;
 	height: 1200px;
@@ -41,19 +39,21 @@ body{
 	display: flex;
 	flex: 1;
 	flex-wrap: wrap;
+	box-sizing: border-box;
 }
 
 @mixin col{
 	background-color: rgb(209, 195, 178);
 	border: solid 1px;
 	flex:0 0 auto;
+	box-sizing: border-box;
 }
 
-.--row{
+.row{
 	@include row();
 }
 
-.--col{
+.col{
 	@include col();
 }
 
@@ -88,7 +88,7 @@ $col_max_amount: 12;
 	//# Since the smallest size is also the fallback, the classes names shouldn't reference the size.
 	@if $size == 0px{
 
-		.--col-offset-0{
+		.col-offset-0{
 			@include col-offset(0);
 		}
 
@@ -96,21 +96,21 @@ $col_max_amount: 12;
 
 			$percentage: calc( (100% / $col_max_amount) * $i); 
 
-			.--col-#{$i}{
+			.col-#{$i}{
 				@include col-size($percentage);
 			}
 
-			.--col-offset-#{$i}{
+			.col-offset-#{$i}{
 				@include col-offset($percentage)
 			}
 
-			.--row-#{$i}{
+			.row-#{$i}{
 				@include row-size($percentage);
 			}
 		}
 	} @else{
 		@media screen and (width >= $size) {
-			.--col-#{$name}-offset-0{
+			.col-#{$name}-offset-0{
 					@include col-offset(0);
 			}
 
@@ -118,15 +118,15 @@ $col_max_amount: 12;
 
 				$percentage: calc( (100% / $col_max_amount) * $i);
 				
-				.--col-#{$name}-#{$i}{
+				.col-#{$name}-#{$i}{
 					@include col-size($percentage);
 				}
 
-				.--col-#{$name}-offset-#{$i}{
+				.col-#{$name}-offset-#{$i}{
 					@include col-offset($percentage);
 				}
 
-				.--row-#{$name}-#{$i}{
+				.row-#{$name}-#{$i}{
 					@include row-size($percentage);
 				}
 			}
