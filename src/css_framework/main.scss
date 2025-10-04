@@ -1,11 +1,103 @@
+
+$debug: false;
+
+
 body{
 	background-color: aqua;
 	section{
 		background-color: bisque;
 	}
 }
-@for $i from 1 through 3 {
-	.--margin#{$i}{
-		margin-left: 10px*$i;
+
+
+.--container {
+	display: flex;
+	flex-wrap: wrap;
+	height: 1200px;
+	flex-direction: column;
+	background-color: #88b3d9;
+	width: 100vw;
+}
+
+
+
+
+@mixin --row{
+	display: flex;
+	flex: 1;
+	flex-wrap: wrap;
+}
+
+@mixin --col{
+	background-color: rgb(209, 195, 178);
+	border: solid 1px;
+	flex:0 0 auto;
+}
+
+.--row{
+	@include --row();
+}
+
+.--col{
+	@include --col();
+}
+
+$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px,"xl" : 1200px, "xxl" : 1400px);
+$col_max_amount: 12;
+
+@each $name , $size in $sizes{
+	@if $size == 0px{
+		@for $i from 1 through $col_max_amount{
+
+			@if $debug == true {
+				.debug{
+					margin-top: $percentage;
+				}
+			}
+
+			$percentage: calc( (100% / $col_max_amount) * $i);
+
+			.--col-#{$i}{
+				@include --col();
+				width: $percentage;
+			}
+
+			.--col-offset-#{$i}{
+				margin-inline-start: $percentage;
+			}
+
+			.--row-#{$i}{
+				@include --row();
+				height: $percentage;
+				background: bisque;
+				flex: 0 0 auto;
+			}
+		}
+	} @else{
+		@media screen and (width >= $size) {
+			.--col-#{$name}-offset-0{
+					margin-inline-start: 0;
+			}
+
+			@for $i from 1 through $col_max_amount{
+				$percentage: calc( (100% / $col_max_amount) * $i);
+				
+				.--col-#{$name}-#{$i}{
+					@include --col();
+					width: $percentage;
+				}
+
+				.--col-#{$name}-offset-#{$i}{
+					margin-inline-start: $percentage;
+				}
+
+				.--row-#{$name}-#{$i}{
+					@include --row();
+					height: $percentage;
+					background: bisque;
+					flex: 0 0 auto;
+				}
+			}
+		}
 	}
 }
