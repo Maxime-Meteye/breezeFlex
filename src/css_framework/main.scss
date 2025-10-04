@@ -1,7 +1,11 @@
 
+//##Debug value
+
 $debug: false;
 
-@mixin debug{
+//#Include somewhere to see if sass reaches there
+
+@mixin debug{ 
 	@if $debug == true {
 		.debug{
 			background-color: red;
@@ -11,6 +15,7 @@ $debug: false;
 
 
 
+//## Styling
 
 body{
 	background-color: aqua;
@@ -30,7 +35,7 @@ body{
 }
 
 
-
+//## Grid styling allows bootstrap like positionning
 
 @mixin row{
 	display: flex;
@@ -68,11 +73,19 @@ body{
 	width: $percentage;
 }
 
+//## Grid style generator uses @mixins to load classes inside @media
 
-$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px, "xl" : 1200px, "xxl" : 1400px);
+//# Media size declaration. Must be formatted as key: value.
+$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px, "xl" : 1200px, "xxl" : 1400px); 
+
+//# Max divisions of columns and rows.
 $col_max_amount: 12;
 
+
+//# Responsible of creating the classes
 @each $name , $size in $sizes{
+	//# Here we create the classes for the smallest size. 
+	//# Since the smallest size is also the fallback, the classes names shouldn't reference the size.
 	@if $size == 0px{
 
 		.--col-offset-0{
@@ -81,7 +94,7 @@ $col_max_amount: 12;
 
 		@for $i from 1 through $col_max_amount{
 
-			$percentage: calc( (100% / $col_max_amount) * $i);
+			$percentage: calc( (100% / $col_max_amount) * $i); 
 
 			.--col-#{$i}{
 				@include col-size($percentage);
