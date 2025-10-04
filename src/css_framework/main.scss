@@ -1,6 +1,16 @@
 
 $debug: false;
 
+@mixin debug{
+	@if $debug == true {
+		.debug{
+			background-color: red;
+		}
+	}
+}
+
+
+
 
 body{
 	background-color: aqua;
@@ -22,80 +32,89 @@ body{
 
 
 
-@mixin --row{
+@mixin row{
 	display: flex;
 	flex: 1;
 	flex-wrap: wrap;
 }
 
-@mixin --col{
+@mixin col{
 	background-color: rgb(209, 195, 178);
 	border: solid 1px;
 	flex:0 0 auto;
 }
 
 .--row{
-	@include --row();
+	@include row();
 }
 
 .--col{
-	@include --col();
+	@include col();
 }
 
-$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px,"xl" : 1200px, "xxl" : 1400px);
+@mixin col-offset($percentage){
+	margin-inline-start: $percentage;
+}
+
+@mixin row-size ($percentage){
+	@include row();
+	height: $percentage;
+	background: bisque;
+	flex: 0 0 auto;
+}
+
+@mixin col-size($percentage){
+	@include col();
+	width: $percentage;
+}
+
+
+$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px, "xl" : 1200px, "xxl" : 1400px);
 $col_max_amount: 12;
 
 @each $name , $size in $sizes{
 	@if $size == 0px{
-		@for $i from 1 through $col_max_amount{
 
-			@if $debug == true {
-				.debug{
-					margin-top: $percentage;
-				}
-			}
+		.--col-offset-0{
+			@include col-offset(0);
+		}
+
+		@for $i from 1 through $col_max_amount{
 
 			$percentage: calc( (100% / $col_max_amount) * $i);
 
 			.--col-#{$i}{
-				@include --col();
-				width: $percentage;
+				@include col-size($percentage);
 			}
 
 			.--col-offset-#{$i}{
-				margin-inline-start: $percentage;
+				@include col-offset($percentage)
 			}
 
 			.--row-#{$i}{
-				@include --row();
-				height: $percentage;
-				background: bisque;
-				flex: 0 0 auto;
+				@include row-size($percentage);
 			}
 		}
 	} @else{
 		@media screen and (width >= $size) {
 			.--col-#{$name}-offset-0{
-					margin-inline-start: 0;
+					@include col-offset(0);
 			}
 
 			@for $i from 1 through $col_max_amount{
+
 				$percentage: calc( (100% / $col_max_amount) * $i);
 				
 				.--col-#{$name}-#{$i}{
-					@include --col();
-					width: $percentage;
+					@include col-size($percentage);
 				}
 
 				.--col-#{$name}-offset-#{$i}{
-					margin-inline-start: $percentage;
+					@include col-offset($percentage);
 				}
 
 				.--row-#{$name}-#{$i}{
-					@include --row();
-					height: $percentage;
-					background: bisque;
-					flex: 0 0 auto;
+					@include row-size($percentage);
 				}
 			}
 		}
