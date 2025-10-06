@@ -15,8 +15,11 @@
 				<div class="col-6">lorqsfsqfqsqsf</div>
 				<div class="col-6">lorqsfsq22222fqsqsf</div>
 			</div>
-			<div class="row-1 row-justify-left">
+			<div class="row-1 row-justify-left box-shadow-smallest-from-xs">
 				<div class="col-12">lorqsfsqfqsqsf</div>
+			</div>
+			<div>
+				<button class="btn">+</button>
 			</div>
         </div>
     </div>

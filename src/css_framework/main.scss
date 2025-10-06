@@ -5,6 +5,8 @@ $debug: true;
 
 //#Include somewhere to see if sass reaches there
 
+$spacing : "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
+
 @mixin debug{ 
 	@if $debug == true {
 		.debug{
@@ -61,6 +63,11 @@ body{
 	margin-inline-start: $percentage;
 }
 
+
+.col-offset-0{
+	@include col-offset(0);
+}
+
 @mixin row-size ($percentage){
 	@include row();
 	height: $percentage;
@@ -73,10 +80,17 @@ body{
 	width: $percentage;
 }
 
+
 //## Grid style generator uses @mixins to load classes inside @media
 
 //# Media size declaration. Must be formatted as key: value.
-$sizes: ("xs" : 0px, "s": 576px, "m": 768px, "l" : 992px, "xl" : 1200px, "xxl" : 1400px); 
+$sizes:
+	"xs" 0px 576px,
+	"s" 576px 768px,
+	"m" 768px 992px,
+	"l" 992px 1200px,
+	"xl" 1200px 1400px,
+	"xxl" 1400px -1; 
 
 //# Max divisions of columns and rows.
 $col_max_amount: 12;
@@ -88,11 +102,10 @@ $col_max_amount: 12;
 	//# Since the smallest size is also the fallback, the classes names shouldn't reference the size.
 	@if $size == 0px{
 
-		.col-offset-0{
-			@include col-offset(0);
-		}
-
 		@for $i from 1 through $col_max_amount{
+
+
+			//TODO Refactor col rows and offset creation so it uses a generator;
 
 			$percentage: calc( (100% / $col_max_amount) * $i); 
 
@@ -131,5 +144,61 @@ $col_max_amount: 12;
 				}
 			}
 		}
+	}
+}
+
+
+//##Hidden definition
+
+@mixin hidden{
+	display: none;
+}
+
+
+.hidden{
+	@include hidden();
+}
+
+
+//## box-shadows definition
+
+$shadow-size : "smallest" 0.5em, "small" 1em, "medium" 1.5em, "big" 2em, "biggest" 2.5em;
+$shadow-blur : 5px;
+$shadow-spread : 1px;
+$shadow-color: rgba(0, 0, 0, 0.8);
+
+@mixin shadow-generator ($mode,$width_name) {
+
+	@each $name, $space in $shadow-size{
+
+		.box-shadow-#{$name}-#{$mode}-#{$width_name}{
+			box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+		}
+
+		.inset-box-shadow-#{$name}-#{$mode}-#{$width_name}{
+			box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+		}
+	}
+}
+
+//## Faire une classe pour l'ombre du texte
+
+
+@each $name, $size, $max_size in $sizes{
+	@media screen and (width >= $size) {
+
+		.hidden-from-#{$name}{
+			@include hidden();
+		}
+
+		@include shadow-generator("from", $name);
+	}
+
+	@media screen and (width >= $size) and (width <= $max_size) {
+		.hidden-only-#{$name}{
+			@include hidden();
+		}
+
+		@include shadow-generator("only", $name);
 	}
 }
