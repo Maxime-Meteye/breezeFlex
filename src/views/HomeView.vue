@@ -15,12 +15,12 @@
 				<div class="col-6">lorqsfsqfqsqsf</div>
 				<div class="col-6">lorqsfsq22222fqsqsf</div>
 			</div>
-			<div class="row-1 row-justify-left box-shadow-smallest-from-xs">
+			<div class="row-1 row-justify-left box-shadow-xs">
 				<div class="col-12">lorqsfsqfqsqsf</div>
 			</div>
-			<div>
-				<button class="btn">+</button>
-			</div>
         </div>
+		<div>
+			<button class="btn primary-tint btn-hover-transparent">+sqfsqfffffff</button>
+		</div>
     </div>
 </template>

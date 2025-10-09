@@ -7,6 +7,23 @@ $debug: true;
 
 $spacing : "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
 
+$main-color : #787784;
+$accent-color : #27478b;
+$anti-accent-color : #df73e9;
+
+:root{
+	--primary-color : 0, 60, 255;
+	--secondary-color : 128, 128, 128;
+	--success-color : 0, 128, 0;
+	--danger-color : 255, 0, 0;
+	--warning-color : 255, 165, 0;
+	--btn-default-opacity: 0.3;
+}
+
+
+
+
+
 @mixin debug{ 
 	@if $debug == true {
 		.debug{
@@ -28,7 +45,6 @@ body{
 .container {
 	display: flex;
 	flex-wrap: wrap;
-	height: 1200px;
 	flex-direction: column;
 	background-color: #88b3d9;
 	width: 100vw;
@@ -160,28 +176,25 @@ $col_max_amount: 12;
 }
 
 
-//## box-shadows definition
+//## box-shadows generator
 
-$shadow-size : "smallest" 0.5em, "small" 1em, "medium" 1.5em, "big" 2em, "biggest" 2.5em;
+$shadow-size : "xs" 0.5em, "s" 1em, "m" 1.5em, "l" 2em, "xl" 2.5em;
 $shadow-blur : 5px;
 $shadow-spread : 1px;
 $shadow-color: rgba(0, 0, 0, 0.8);
 
-@mixin shadow-generator ($mode,$width_name) {
+@each $name, $space in $shadow-size{
 
-	@each $name, $space in $shadow-size{
+	.box-shadow-#{$name}{
+		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
 
-		.box-shadow-#{$name}-#{$mode}-#{$width_name}{
-			box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
-		}
-
-		.inset-box-shadow-#{$name}-#{$mode}-#{$width_name}{
-			box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
-		}
+	.inset-box-shadow-#{$name}{
+		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
 	}
 }
 
-//## Faire une classe pour l'ombre du texte
+//## TODO Faire une classe pour l'ombre du texte
 
 
 @each $name, $size, $max_size in $sizes{
@@ -190,15 +203,57 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 		.hidden-from-#{$name}{
 			@include hidden();
 		}
-
-		@include shadow-generator("from", $name);
 	}
 
 	@media screen and (width >= $size) and (width <= $max_size) {
 		.hidden-only-#{$name}{
 			@include hidden();
 		}
-
-		@include shadow-generator("only", $name);
 	}
+}
+
+
+//## BTN classes
+
+.btn{
+	border-radius: 1em;
+	width: auto;
+	height: auto;
+	min-width: 2em;
+	min-height: 1em;
+	background-color: rgb($color: #ffffff, $alpha: 1 );
+
+	transition: all 0.15s ease-in;
+}
+.btn:hover{
+	transform: translateY(-2px);
+	background-color: var(--background-on-hover);
+}
+
+.btn:active{
+	transform: translateY(2px);
+}
+
+.btn-hover-transparent{
+	--background-on-hover: rgba(var(--tint-color, #000000), var(--tint-opacity,0.0));
+}
+
+
+.primary-tint{
+	--tint-color: var(--primary-color);
+	--tint-opacity: var(--btn-default-opacity);
+}
+
+
+
+.transparent-clear{
+	background-color: rgba($color: #000000, $alpha: 0.0);
+}
+.transparent-blur-light{
+	background-color: rgba($color: #000000, $alpha: 0.0);
+	backdrop-filter: blur(4px);
+}
+.transparent-blur-heavy{
+	background-color: rgba($color: #000000, $alpha: 0.0);
+	backdrop-filter: blur(8px);
 }

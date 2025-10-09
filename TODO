@@ -1,3 +1,12 @@
 TODO Gérer l'intégration de ta feuille de style avec sass
 
-//TODO Rajouter les paddings, les margins, etc
+TODO Rajouter les paddings, les margins, etc
+
+TODO Move tint inside a mixin, assign root variables with scss variables
+so your code still functions how you expect when compiled.
+
+
+TODOdocumment your code so it's understandable.
+Write a full fledged markdown documentation.
+
+TODO Commit more
