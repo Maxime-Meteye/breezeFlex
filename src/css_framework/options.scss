@@ -1,0 +1,29 @@
+//# Media size declaration. Must be formatted as key: value.
+$sizes:
+	"xs" 0px 576px,
+	"s" 576px 768px,
+	"m" 768px 992px,
+	"l" 992px 1200px,
+	"xl" 1200px 1400px,
+	"xxl" 1400px -1; 
+
+//# Max divisions of columns and rows.
+$col_max_amount: 12;
+
+
+
+$spacing : "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
+
+$main-color : #787784;
+$accent-color : #27478b;
+$anti-accent-color : #df73e9;
+
+$themes :(
+	"primary" : #003cff,
+	"secondary" : #808080,
+	"success" : #008000,
+	"danger" : #ff0000,
+	"warning" : #ffa500
+	);
+
+$btn-default-opacity: 0.3;

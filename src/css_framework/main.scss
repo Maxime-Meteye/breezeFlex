@@ -1,28 +1,13 @@
+@use 'grid';
+@use 'options';
 
 //##Debug value
 
-$debug: true;
+
+
+$debug: false;
 
 //#Include somewhere to see if sass reaches there
-
-$spacing : "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
-
-$main-color : #787784;
-$accent-color : #27478b;
-$anti-accent-color : #df73e9;
-
-:root{
-	--primary-color : 0, 60, 255;
-	--secondary-color : 128, 128, 128;
-	--success-color : 0, 128, 0;
-	--danger-color : 255, 0, 0;
-	--warning-color : 255, 165, 0;
-	--btn-default-opacity: 0.3;
-}
-
-
-
-
 
 @mixin debug{ 
 	@if $debug == true {
@@ -31,6 +16,13 @@ $anti-accent-color : #df73e9;
 		}
 	}
 }
+
+:root{
+	@each $name, $color in options.$themes{
+		--#{$name}-color : #{red($color)},#{green($color)},#{blue($color)};
+	}
+}
+
 
 //## Styling
 
@@ -42,138 +34,7 @@ body{
 }
 
 
-.container {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	background-color: #88b3d9;
-	width: 100vw;
-}
-
-
-//## Grid styling allows bootstrap like positionning
-
-@mixin row{
-	display: flex;
-	flex: 1;
-	flex-wrap: wrap;
-	box-sizing: border-box;
-}
-
-@mixin col{
-	background-color: rgb(209, 195, 178);
-	border: solid 1px;
-	flex:0 0 auto;
-	box-sizing: border-box;
-}
-
-.row{
-	@include row();
-}
-
-.col{
-	@include col();
-}
-
-@mixin col-offset($percentage){
-	margin-inline-start: $percentage;
-}
-
-
-.col-offset-0{
-	@include col-offset(0);
-}
-
-@mixin row-size ($percentage){
-	@include row();
-	height: $percentage;
-	background: bisque;
-	flex: 0 0 auto;
-}
-
-@mixin col-size($percentage){
-	@include col();
-	width: $percentage;
-}
-
-
-//## Grid style generator uses @mixins to load classes inside @media
-
-//# Media size declaration. Must be formatted as key: value.
-$sizes:
-	"xs" 0px 576px,
-	"s" 576px 768px,
-	"m" 768px 992px,
-	"l" 992px 1200px,
-	"xl" 1200px 1400px,
-	"xxl" 1400px -1; 
-
-//# Max divisions of columns and rows.
-$col_max_amount: 12;
-
-
-//# Responsible of creating the classes
-@each $name , $size in $sizes{
-	//# Here we create the classes for the smallest size. 
-	//# Since the smallest size is also the fallback, the classes names shouldn't reference the size.
-	@if $size == 0px{
-
-		@for $i from 1 through $col_max_amount{
-
-
-			//TODO Refactor col rows and offset creation so it uses a generator;
-
-			$percentage: calc( (100% / $col_max_amount) * $i); 
-
-			.col-#{$i}{
-				@include col-size($percentage);
-			}
-
-			.col-offset-#{$i}{
-				@include col-offset($percentage)
-			}
-
-			.row-#{$i}{
-				@include row-size($percentage);
-			}
-		}
-	} @else{
-		@media screen and (width >= $size) {
-			.col-#{$name}-offset-0{
-					@include col-offset(0);
-			}
-
-			@for $i from 1 through $col_max_amount{
-
-				$percentage: calc( (100% / $col_max_amount) * $i);
-				
-				.col-#{$name}-#{$i}{
-					@include col-size($percentage);
-				}
-
-				.col-#{$name}-offset-#{$i}{
-					@include col-offset($percentage);
-				}
-
-				.row-#{$name}-#{$i}{
-					@include row-size($percentage);
-				}
-			}
-		}
-	}
-}
-
-
-//##Hidden definition
-
-@mixin hidden{
-	display: none;
-}
-
-
-.hidden{
-	@include hidden();
-}
+@include debug();
 
 
 //## box-shadows generator
@@ -197,7 +58,18 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 //## TODO Faire une classe pour l'ombre du texte
 
 
-@each $name, $size, $max_size in $sizes{
+//##Hidden definition
+
+@mixin hidden{
+	display: none;
+}
+
+
+.hidden{
+	@include hidden();
+}
+
+@each $name, $size, $max_size in options.$sizes{
 	@media screen and (width >= $size) {
 
 		.hidden-from-#{$name}{
@@ -227,7 +99,7 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 }
 .btn:hover{
 	transform: translateY(-2px);
-	background-color: var(--background-on-hover);
+	background-color: var(--background-on-hover, black);
 }
 
 .btn:active{
@@ -241,7 +113,16 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 
 .primary-tint{
 	--tint-color: var(--primary-color);
-	--tint-opacity: var(--btn-default-opacity);
+//	--tint-opacity: var(--btn-default-opacity);
+	--tint-opacity: 0.5;
+}
+
+
+@each $name, $color in options.$themes{
+	.btn-#{$name}{
+		--#{$name} :  var(--#{$name}-color);
+		background-color: rgb(var(--#{$name}));
+	}
 }
 
 

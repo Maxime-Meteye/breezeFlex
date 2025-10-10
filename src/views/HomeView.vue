@@ -20,7 +20,7 @@
 			</div>
         </div>
 		<div>
-			<button class="btn primary-tint btn-hover-transparent">+sqfsqfffffff</button>
+			<button class="btn primary-tint btn-hover-transparent btn-primary">primary</button>
 		</div>
     </div>
 </template>
