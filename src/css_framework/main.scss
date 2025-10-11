@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'grid';
 @use 'options';
 
@@ -19,7 +20,19 @@ $debug: false;
 
 :root{
 	@each $name, $color in options.$themes{
-		--#{$name}-color : #{red($color)},#{green($color)},#{blue($color)};
+		--#{$name}-color : 
+			#{color.channel($color,"red")},
+			#{color.channel($color,"green")},
+			#{color.channel($color,"blue")};
+
+		$hover-color : color.scale($color, $blackness: 20%);
+
+		--#{$name}-hover : 
+			#{color.channel($hover-color,"red")},
+			#{color.channel($hover-color,"green")},
+			#{color.channel($hover-color,"blue")};
+
+		
 	}
 }
 
@@ -99,7 +112,7 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 }
 .btn:hover{
 	transform: translateY(-2px);
-	background-color: var(--background-on-hover, black);
+	background-color: var(--background-on-hover);
 }
 
 .btn:active{
@@ -107,22 +120,27 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 }
 
 .btn-hover-transparent{
-	--background-on-hover: rgba(var(--tint-color, #000000), var(--tint-opacity,0.0));
+	--background-on-hover: rgba(
+		var(--tint-color, #ffffff),
+		 var(--tint-opacity,0.0));
 }
 
 
-.primary-tint{
-	--tint-color: var(--primary-color);
-//	--tint-opacity: var(--btn-default-opacity);
-	--tint-opacity: 0.5;
-}
 
+@each $name, $color, $text-color in options.$themes{
 
-@each $name, $color in options.$themes{
 	.btn-#{$name}{
 		--#{$name} :  var(--#{$name}-color);
 		background-color: rgb(var(--#{$name}));
+		color: #{$text-color};
+		--background-on-hover : rgba(var(--#{$name}-hover) , 1.0);
 	}
+
+	.#{$name}-tint{
+		--tint-color: var(--#{$name}-color);
+		--tint-opacity: #{options.$btn-default-opacity};
+	}
+
 }
 
 

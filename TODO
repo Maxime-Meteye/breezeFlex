@@ -1,6 +1,4 @@
-TODO Gérer l'intégration de ta feuille de style avec sass
-
-TODO Rajouter les paddings, les margins, etc
+TODO  IMPORTANT Rajouter les paddings, les margins, etc
 
 
 TODOdocumment your code so it's understandable.
@@ -12,3 +10,6 @@ TODO Commit more
 
 
 TODO Always when possible define css variables in lieu of scss. For the easy customisation of css users.
+
+
+TODO Manage computed text color (have this and hover color creation inside computed to reuse them later)

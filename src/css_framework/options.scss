@@ -19,11 +19,14 @@ $accent-color : #27478b;
 $anti-accent-color : #df73e9;
 
 $themes :(
-	"primary" : #003cff,
-	"secondary" : #808080,
-	"success" : #008000,
-	"danger" : #ff0000,
-	"warning" : #ffa500
+	"primary" #0f5da2 white,
+	"secondary" #616161 white,
+	"info" #64aceb black,
+	"success" #2b8500 white,
+	"danger" #b4000a white,
+	"warning" #f19113 black,
+	"dark" #191e24 white,
+	"light" #ffffff black
 	);
 
 $btn-default-opacity: 0.3;

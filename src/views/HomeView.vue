@@ -21,6 +21,13 @@
         </div>
 		<div>
 			<button class="btn primary-tint btn-hover-transparent btn-primary">primary</button>
+			<button class="btn btn-secondary">secondary</button>
+			<button class="btn btn-info">info</button>
+			<button class="btn btn-success">success</button>
+			<button class="btn btn-warning">warning</button>
+			<button class="btn btn-danger">danger</button>
+			<button class="btn btn-light">light</button>
+			<button class="btn btn-dark">dark</button>
 		</div>
     </div>
 </template>
