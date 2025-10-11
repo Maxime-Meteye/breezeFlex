@@ -119,12 +119,6 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 	transform: translateY(2px);
 }
 
-.btn-hover-transparent{
-	--background-on-hover: rgba(
-		var(--tint-color, #ffffff),
-		 var(--tint-opacity,0.0));
-}
-
 
 
 @each $name, $color, $text-color in options.$themes{
@@ -139,10 +133,16 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 	.#{$name}-tint{
 		--tint-color: var(--#{$name}-color);
 		--tint-opacity: #{options.$btn-default-opacity};
+
 	}
 
 }
 
+.btn-hover-transparent{
+	--background-on-hover: rgba(
+		var(--tint-color, #ffffff),
+		 var(--tint-opacity,0.0));
+}
 
 
 .transparent-clear{
