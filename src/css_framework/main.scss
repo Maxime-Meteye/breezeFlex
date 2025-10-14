@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:meta';
 @use 'grid';
 @use 'options';
 
@@ -17,21 +18,57 @@ $debug: false;
 		}
 	}
 }
+//
+
+@function text-color-maker($base-color){
+	$base-color : color.to-space($base-color, hsl);
+	@if color.channel($base-color,'lightness', hsl) >= 50% {
+		@debug 'chose black';
+		@return #000000;
+	}@else{
+		@debug 'chose white';
+		@return #ffffff;
+	}
+}
 
 :root{
-	@each $name, $color in options.$themes{
+	@each $name, $color, $text-color in options.$themes{
+
+		@if $text-color == null{
+			$text-color : text-color-maker($color);
+			--#{$name}-text-color : #{$text-color};
+		}@else{
+			--#{$name}-text-color : #{$text-color};
+		}
+
 		--#{$name}-color : 
 			#{color.channel($color,"red")},
 			#{color.channel($color,"green")},
 			#{color.channel($color,"blue")};
 
-		$hover-color : color.scale($color, $blackness: 20%);
+		$hover-color:white;
+		@if color.channel($text-color, "lightness",hsl) <= 50% {
+			$hover-color : color.scale($color, $lightness: -30%);
+		}@else{
+			$hover-color : color.scale($color, $lightness: +30%);
+		}
 
 		--#{$name}-hover : 
 			#{color.channel($hover-color,"red")},
 			#{color.channel($hover-color,"green")},
 			#{color.channel($hover-color,"blue")};
+		
+		$active-color:white;
+		@if color.channel($color,"lightness", hsl) >= 50% {
+			$active-color : color.scale($color, $lightness: -40%);
+		}@else{
+			$active-color : color.scale($color, $lightness: +40%);
+		}
 
+		--#{$name}-active : 
+			#{color.channel($active-color,"red")},
+			#{color.channel($active-color,"green")},
+			#{color.channel($active-color,"blue")};
 		
 	}
 }
@@ -117,6 +154,7 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 
 .btn:active{
 	transform: translateY(2px);
+	background-color: var(--background-on-active);
 }
 
 
@@ -126,8 +164,9 @@ $shadow-color: rgba(0, 0, 0, 0.8);
 	.btn-#{$name}{
 		--#{$name} :  var(--#{$name}-color);
 		background-color: rgb(var(--#{$name}));
-		color: #{$text-color};
+		color: var(--#{$name}-text-color);
 		--background-on-hover : rgba(var(--#{$name}-hover) , 1.0);
+		--background-on-active : rgba(var(--#{$name}-active),1.0);
 	}
 
 	.#{$name}-tint{
