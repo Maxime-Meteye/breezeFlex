@@ -1,0 +1,95 @@
+@use 'sass:color';
+@use 'user_options/user_options' as options;
+@use 'utils';
+
+
+:root{
+	@each $name, $color, $text-color in options.$themes{
+
+		@if $text-color == null{
+			$text-color : utils.text-color-maker($color);
+			--#{$name}-text-color : #{$text-color};
+		}@else{
+			--#{$name}-text-color : #{$text-color};
+		}
+
+		--#{$name}-color : 
+			#{color.channel($color,"red")},
+			#{color.channel($color,"green")},
+			#{color.channel($color,"blue")};
+
+		$hover-color:white;
+		@if color.channel($text-color, "lightness",hsl) <= 50% {
+			$hover-color : color.scale($color, $lightness: -30%);
+		}@else{
+			$hover-color : color.scale($color, $lightness: +30%);
+		}
+
+		--#{$name}-hover : 
+			#{color.channel($hover-color,"red")},
+			#{color.channel($hover-color,"green")},
+			#{color.channel($hover-color,"blue")};
+		
+		$active-color:white;
+		@if color.channel($color,"lightness", hsl) >= 50% {
+			$active-color : color.scale($color, $lightness: -40%);
+		}@else{
+			$active-color : color.scale($color, $lightness: +40%);
+		}
+
+		--#{$name}-active : 
+			#{color.channel($active-color,"red")},
+			#{color.channel($active-color,"green")},
+			#{color.channel($active-color,"blue")};
+		
+	}
+}
+
+
+//## BTN classes
+
+.btn{
+	border-radius: 1em;
+	width: auto;
+	height: auto;
+	min-width: 2em;
+	min-height: 1em;
+	background-color: rgb($color: #ffffff, $alpha: 1 );
+
+	transition: all 0.15s ease-in;
+}
+.btn:hover{
+	transform: translateY(-2px);
+	background-color: var(--background-on-hover);
+}
+
+.btn:active{
+	transform: translateY(2px);
+	background-color: var(--background-on-active);
+}
+
+
+
+@each $name, $color, $text-color in options.$themes{
+
+	.btn-#{$name}{
+		--#{$name} :  var(--#{$name}-color);
+		background-color: rgb(var(--#{$name}));
+		color: var(--#{$name}-text-color);
+		--background-on-hover : rgba(var(--#{$name}-hover) , 1.0);
+		--background-on-active : rgba(var(--#{$name}-active),1.0);
+	}
+
+	.#{$name}-tint{
+		--tint-color: var(--#{$name}-color);
+		--tint-opacity: #{options.$btn-default-opacity};
+
+	}
+
+}
+
+.btn-hover-transparent{
+	--background-on-hover: rgba(
+		var(--tint-color, #ffffff),
+		 var(--tint-opacity,0.0));
+}

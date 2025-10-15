@@ -1,5 +1,4 @@
-@use 'options';
-
+@use 'user_options/user_options' as options;
 
 .container {
 	display: flex;

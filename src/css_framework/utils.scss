@@ -1,0 +1,10 @@
+@use 'sass:color';
+
+@function text-color-maker($base-color){
+	$base-color : color.to-space($base-color, hsl);
+	@if color.channel($base-color,'lightness', hsl) >= 50% {
+		@return #000000;
+	}@else{
+		@return #ffffff;
+	}
+}
