@@ -1,10 +1,13 @@
 @use 'sass:color';
+@use 'sass:map';
 @use 'user_options/user_options' as options;
 @use 'utils';
 
 
 :root{
 	@each $name, $color, $text-color in options.$themes{
+
+		 $color: #{$color};
 
 		@if $text-color == null{
 			$text-color : utils.text-color-maker($color);
