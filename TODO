@@ -15,3 +15,17 @@ TODO Commit more
 TODO Always when possible define css variables in lieu of scss. For the easy customisation of css users.
 
 TODO separate button and background logic
+
+TODO Make 
+	lists
+	input
+	select
+	radio buttons
+	forms
+	checkbox
+	range
+
+
+TODO the element classes define background, text-color, and the colors of borders.
+with variables : background, border-color, text-color.
+This makes it easy for elements to have coherent style. And avoids having hard-set fallbacks. Even the fallbacks are coherent.
