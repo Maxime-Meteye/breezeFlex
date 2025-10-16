@@ -1,12 +1,17 @@
 @use 'sass:color';
 
+
+@use 'reset.css';
+
 @use 'user_options/user_options' as options;
 @use 'grid';
 @use 'buttons';
+@use 'shadows';
+@use 'margin';
+@use 'padding';
 
 //##Debug value
 
-@debug options.$themes;
 
 $debug: false;
 
@@ -22,40 +27,8 @@ $debug: false;
 //
 
 
-
-
-//## Styling
-
-body{
-	background-color: aqua;
-	section{
-		background-color: bisque;
-	}
-}
-
-
 @include debug();
 
-
-//## box-shadows generator
-
-$shadow-size : "xs" 0.5em, "s" 1em, "m" 1.5em, "l" 2em, "xl" 2.5em;
-$shadow-blur : 5px;
-$shadow-spread : 1px;
-$shadow-color: rgba(0, 0, 0, 0.8);
-
-@each $name, $space in $shadow-size{
-
-	.box-shadow-#{$name}{
-		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
-	}
-
-	.inset-box-shadow-#{$name}{
-		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
-	}
-}
-
-//## TODO Faire une classe pour l'ombre du texte
 
 
 //##Hidden definition

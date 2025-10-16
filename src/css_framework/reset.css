@@ -2,7 +2,6 @@
 *{
 	margin: 0;
     padding: 0;
-    background-color: hsla(0, 0%, 100%, 0);
 	font: inherit;
     transition: all 0.2s ease-in;
 	border: 0;
@@ -10,9 +9,15 @@
 	max-width: 100%;
     height: auto;
 	overflow: hidden;
+	min-width: fit-content;
 
 	list-style: none;
 	box-sizing: border-box;
+	text-wrap: pretty;
+	line-height: 1.7em;
+
+	text-align: center;
+	vertical-align: middle;
 }
 
 

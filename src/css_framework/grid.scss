@@ -4,7 +4,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	background-color: #88b3d9;
 	width: 100vw;
 }
 
@@ -19,8 +18,6 @@
 }
 
 @mixin col{
-	background-color: rgb(209, 195, 178);
-	border: solid 1px;
 	flex:0 0 auto;
 	box-sizing: border-box;
 }
@@ -45,7 +42,6 @@
 @mixin row-size ($percentage){
 	@include row();
 	height: $percentage;
-	background: bisque;
 	flex: 0 0 auto;
 }
 

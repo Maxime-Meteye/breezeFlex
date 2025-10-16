@@ -1,0 +1,40 @@
+@use 'user_options/user_options' as options;
+
+
+
+@each $name, $margin in options.$spacing{
+
+	--margin-#{$name} : #{--margin-#{$name}};
+
+	.margin-t-#{$name}{
+		margin-top: --margin-#{$name};
+	}
+	.margin-r-#{$name}{
+		margin-right: --margin-#{$name};
+	}
+	.margin-b-#{$name}{
+		margin-bottom: --margin-#{$name};
+	}
+	.margin-l-#{$name}{
+		margin-left: --margin-#{$name};
+	}
+	.margin-#{$name}{
+		margin: --margin-#{$name};
+	}
+
+	.margin-inline-start-#{$name}{
+		margin-inline-start: --margin-#{$name};
+	}
+	.margin-inline-end-#{$name}{
+		margin-inline-end: --margin-#{$name};
+	}
+	.margin-block-#{$name}{
+		margin-block: --margin-#{$name};
+	}
+	.margin-block-start-#{$name}{
+		margin-block-start: --margin-#{$name};
+	}
+	.margin-block-end-#{$name}{
+		margin-block-end: --margin-#{$name};
+	}
+}

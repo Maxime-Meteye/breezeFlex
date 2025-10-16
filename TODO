@@ -14,6 +14,4 @@ TODO Commit more
 
 TODO Always when possible define css variables in lieu of scss. For the easy customisation of css users.
 
-
-TODO Separate button logic and utilities in their own respective files
-TODO Margin and pagging
+TODO separate button and background logic

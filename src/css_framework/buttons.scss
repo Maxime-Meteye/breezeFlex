@@ -6,6 +6,9 @@
 
 
 :root{
+
+	--btn-opacity : #{options.$btn-default-opacity};
+	--btn-default-color : #{options.$btn-default-color};
 	@each $name, $color, $text-color in options.$themes{
 
 		@if $text-color == null{
@@ -18,32 +21,35 @@
 		--#{$name}-color : 
 			#{color.channel($color,"red", $space: rgb)},
 			#{color.channel($color,"green", $space: rgb)},
-			#{color.channel($color,"blue", $space: rgb)};
+			#{color.channel($color,"blue", $space: rgb)}
+		;
 
 		$hover-color:white;
 		@if color.channel($text-color, "lightness",$space : hsl) <= 50% {
-			$hover-color : color.scale($color, $lightness: -30%, $space: hsl);
+			$hover-color : color.scale($color, $lightness: -15%, $space: hsl);
 		}@else{
-			$hover-color : color.scale($color, $lightness: +30%, $space: hsl);
+			$hover-color : color.scale($color, $lightness: +15%, $space: hsl);
 		}
 
 		--#{$name}-hover : 
 			#{color.channel($hover-color,"red", $space: rgb)},
 			#{color.channel($hover-color,"green", $space: rgb)},
-			#{color.channel($hover-color,"blue", $space: rgb)};
+			#{color.channel($hover-color,"blue", $space: rgb)}
+		;
 		
 		$active-color:white;
 		@if color.channel($color,"lightness", $space: hsl) >= 50% {
-			$active-color : color.scale($color, $lightness: -40%, $space: hsl);
+			$active-color : color.scale($color, $lightness: -25%, $space: hsl);
 		}@else{
-			$active-color : color.scale($color, $lightness: +40%, $space: hsl);
+			$active-color : color.scale($color, $lightness: +25%, $space: hsl);
 		}
 
 		--#{$name}-active : 
 			#{color.channel($active-color,"red", $space: rgb)},
 			#{color.channel($active-color,"green", $space: rgb)},
-			#{color.channel($active-color,"blue", $space: rgb)};
-		
+			#{color.channel($active-color,"blue", $space: rgb)}
+		;
+		--#{$name}-border-color : #{color.scale($color, $lightness: -50%, $space: hsl)};
 	}
 }
 
@@ -56,7 +62,8 @@
 	height: auto;
 	min-width: 2em;
 	min-height: 1em;
-	background-color: rgb($color: #ffffff, $alpha: 1 );
+	padding: 1px 6px;
+	background-color: rgb($color: var(--btn-default-color), $alpha: var(--btn-opacity) );
 
 	transition: all 0.15s ease-in;
 }
@@ -75,17 +82,20 @@
 @each $name, $color, $text-color in options.$themes{
 
 	.btn-#{$name}{
-		--#{$name} :  var(--#{$name}-color);
-		background-color: rgb(var(--#{$name}));
+		background-color: rgb(var(--#{$name}-color));
 		color: var(--#{$name}-text-color);
-		--background-on-hover : rgba(var(--#{$name}-hover) , 1.0);
-		--background-on-active : rgba(var(--#{$name}-active),1.0);
+		--background-on-hover : rgba(var(--#{$name}-hover) , var(--btn-opacity));
+		--background-on-active : rgba(var(--#{$name}-active),var(--btn-opacity));
+		border: var(--border, solid 2px var(--#{$name}-border-color));
 	}
 
 	.#{$name}-tint{
 		--tint-color: var(--#{$name}-color);
-		--tint-opacity: #{options.$btn-default-opacity};
+		--tint-opacity: #{options.$tint-opacity};
+	}
 
+	.background-#{$name}{
+		background-color: rgb(var(--#{$name}-color));
 	}
 
 }
@@ -93,5 +103,11 @@
 .btn-hover-transparent{
 	--background-on-hover: rgba(
 		var(--tint-color, #ffffff),
-		 var(--tint-opacity,0.0));
+		var(--tint-opacity,0.0));
+}
+.btn-active-transparent{
+	--background-on-active: rgba(
+		var(--tint-color, #ffffff),
+		var(--tint-opacity,0.0))
+	;
 }

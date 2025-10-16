@@ -1,0 +1,38 @@
+@use 'user_options/user_options' as options;
+
+
+//## box-shadows generator
+
+$shadow-color : options.$shadow-color;
+$shadow-spread : options.$shadow-spread;
+$shadow-blur : options.$shadow-blur;
+
+
+@each $name, $space in options.$shadow-sizes{
+
+	.box-shadow-#{$name}{
+		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+
+	.box-shadow-#{$name}-on-hover:hover{
+		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+
+	.box-shadow-#{$name}-on-active:active{
+		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+
+	.inset-box-shadow-#{$name}{
+		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+
+	.inset-box-shadow-#{$name}-on-hover:hover{
+		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+	.inset-box-shadow-#{$name}-on-active:active{
+		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	}
+}
+
+//## TODO Faire une classe pour l'ombre du texte
+

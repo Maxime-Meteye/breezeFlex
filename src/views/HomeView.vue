@@ -19,7 +19,7 @@
 				<div class="col-12">lorqsfsqfqsqsf</div>
 			</div>
         </div>
-		<div>
+		<div class="background-primary margin-block-m padding-block-xs">
 			<button class="btn primary-tint btn-hover-transparent btn-primary">primary</button>
 			<button class="btn btn-secondary">secondary</button>
 			<button class="btn btn-info">info</button>

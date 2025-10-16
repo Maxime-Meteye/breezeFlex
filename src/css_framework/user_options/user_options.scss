@@ -9,8 +9,7 @@
 
 utils.text-color.maker is passed null
 */
-$themes:(
-	"primary": #FFE4C4,
-	"secondary": hsl(180, 100%, 50%)
- );
+
+
+
 @forward '../options.scss'

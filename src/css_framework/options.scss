@@ -15,9 +15,6 @@ $col_max_amount: 12;
 
 $spacing : "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
 
-$main-color : #787784;
-$accent-color : #27478b;
-$anti-accent-color : #df73e9;
 
 $themes :(
 	"primary" #0f5da2,
@@ -30,4 +27,11 @@ $themes :(
 	"light" #ffffff
 	);
 
-$btn-default-opacity: 0.3;
+$tint-opacity: 0.3;
+$btn-default-opacity : 1;
+$btn-default-color : #ffffff;
+
+$shadow-sizes : "xs" 0.5em, "s" 1em, "m" 1.5em, "l" 2em, "xl" 2.5em;
+$shadow-blur : 5px;
+$shadow-spread : 1px;
+$shadow-color: rgba(0, 0, 0, 0.8);
