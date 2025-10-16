@@ -1,13 +1,12 @@
 @use 'sass:color';
 @use 'sass:map';
+@use 'sass:string';
 @use 'user_options/user_options' as options;
 @use 'utils';
 
 
 :root{
 	@each $name, $color, $text-color in options.$themes{
-
-		 $color: #{$color};
 
 		@if $text-color == null{
 			$text-color : utils.text-color-maker($color);
@@ -17,33 +16,33 @@
 		}
 
 		--#{$name}-color : 
-			#{color.channel($color,"red")},
-			#{color.channel($color,"green")},
-			#{color.channel($color,"blue")};
+			#{color.channel($color,"red", $space: rgb)},
+			#{color.channel($color,"green", $space: rgb)},
+			#{color.channel($color,"blue", $space: rgb)};
 
 		$hover-color:white;
-		@if color.channel($text-color, "lightness",hsl) <= 50% {
-			$hover-color : color.scale($color, $lightness: -30%);
+		@if color.channel($text-color, "lightness",$space : hsl) <= 50% {
+			$hover-color : color.scale($color, $lightness: -30%, $space: hsl);
 		}@else{
-			$hover-color : color.scale($color, $lightness: +30%);
+			$hover-color : color.scale($color, $lightness: +30%, $space: hsl);
 		}
 
 		--#{$name}-hover : 
-			#{color.channel($hover-color,"red")},
-			#{color.channel($hover-color,"green")},
-			#{color.channel($hover-color,"blue")};
+			#{color.channel($hover-color,"red", $space: rgb)},
+			#{color.channel($hover-color,"green", $space: rgb)},
+			#{color.channel($hover-color,"blue", $space: rgb)};
 		
 		$active-color:white;
-		@if color.channel($color,"lightness", hsl) >= 50% {
-			$active-color : color.scale($color, $lightness: -40%);
+		@if color.channel($color,"lightness", $space: hsl) >= 50% {
+			$active-color : color.scale($color, $lightness: -40%, $space: hsl);
 		}@else{
-			$active-color : color.scale($color, $lightness: +40%);
+			$active-color : color.scale($color, $lightness: +40%, $space: hsl);
 		}
 
 		--#{$name}-active : 
-			#{color.channel($active-color,"red")},
-			#{color.channel($active-color,"green")},
-			#{color.channel($active-color,"blue")};
+			#{color.channel($active-color,"red", $space: rgb)},
+			#{color.channel($active-color,"green", $space: rgb)},
+			#{color.channel($active-color,"blue", $space: rgb)};
 		
 	}
 }
