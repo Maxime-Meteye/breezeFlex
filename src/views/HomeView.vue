@@ -15,14 +15,14 @@
 				<div class="col-6">lorqsfsqfqsqsf</div>
 				<div class="col-6">lorqsfsq22222fqsqsf</div>
 			</div>
-			<div class="row-1 row-justify-left box-shadow-xs">
+			<div class="row-1 row-justify-left">
 				<div class="col-12">lorqsfsqfqsqsf</div>
 			</div>
         </div>
 		<div class="background-primary margin-block-m padding-block-xs">
 			<button class="btn primary-tint btn-hover-transparent btn-primary">primary</button>
 			<button class="btn btn-secondary">secondary</button>
-			<button class="btn btn-info">info</button>
+			<button class="btn btn-info shadow-xs">info</button>
 			<button class="btn btn-success">success</button>
 			<button class="btn btn-warning">warning</button>
 			<button class="btn btn-danger">danger</button>

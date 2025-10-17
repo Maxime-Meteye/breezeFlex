@@ -4,33 +4,39 @@
 //## box-shadows generator
 
 $shadow-color : options.$shadow-color;
-$shadow-spread : options.$shadow-spread;
 $shadow-blur : options.$shadow-blur;
+$shadow-offset : options.$shadow-offset;
 
+@mixin shadow($shadow-spread){
+	box-shadow: $shadow-offset $shadow-offset $shadow-blur $shadow-spread $shadow-color;
+}
+@mixin inset-shadow($shadow-spread){
+	box-shadow: inset $shadow-offset $shadow-offset $shadow-blur $shadow-spread $shadow-color;
+}
 
 @each $name, $space in options.$shadow-sizes{
 
-	.box-shadow-#{$name}{
-		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	.shadow-#{$name}{
+		@include shadow($space);
 	}
 
-	.box-shadow-#{$name}-on-hover:hover{
-		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	.shadow-#{$name}-on-hover:hover{
+		@include shadow($space);
 	}
 
-	.box-shadow-#{$name}-on-active:active{
-		box-shadow: $space $space $shadow-blur $shadow-spread $shadow-color;
+	.shadow-#{$name}-on-active:active{
+		@include shadow($space);
 	}
 
-	.inset-box-shadow-#{$name}{
-		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	.inset-shadow-#{$name}{
+		@include inset-shadow($space);
 	}
 
-	.inset-box-shadow-#{$name}-on-hover:hover{
-		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	.inset-shadow-#{$name}-on-hover:hover{
+		@include inset-shadow($space);
 	}
-	.inset-box-shadow-#{$name}-on-active:active{
-		box-shadow: inset $space $space $shadow-blur $shadow-spread $shadow-color;
+	.inset-shadow-#{$name}-on-active:active{
+		@include inset-shadow($space);
 	}
 }
 

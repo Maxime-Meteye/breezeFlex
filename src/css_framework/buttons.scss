@@ -125,7 +125,7 @@
 }
 
 
-.border{
+.border,.border-a,.border-all{
 	border: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
 .border-top{
@@ -140,22 +140,22 @@
 .border-left{
 	border-left: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-block{
+.border-block,.border-y{
 	border-block: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-block-start{
+.border-block-start,.border-y-start{
 	border-block-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-block-end{
+.border-block-end,.border-y-end{
 	border-block-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-inline{
+.border-inline,.border-x{
 	border-inline: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-inline-start{
+.border-inline-start,.border-x-start{
 	border-inline-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
-.border-inline-end{
+.border-inline-end,.border-x-end{
 	border-inline-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
 }
 

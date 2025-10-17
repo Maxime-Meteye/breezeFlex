@@ -26,6 +26,4 @@ TODO Make
 	range
 
 
-TODO the element classes define background, text-color, and the colors of borders.
-with variables : background, border-color, text-color.
-This makes it easy for elements to have coherent style. And avoids having hard-set fallbacks. Even the fallbacks are coherent.
+TODO inactive button style with gray scale maybe

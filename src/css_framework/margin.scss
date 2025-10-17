@@ -4,38 +4,38 @@
 
 @each $name, $margin in options.$spacing{
 	:root{
-		--margin-#{$name} : $margin;
+		--margin-#{$name} : #{$margin};
 	}
 
 	.margin-top-#{$name}{
-		margin-top: --margin-#{$name};
+		margin-top:var(--margin-#{$name});
 	}
 	.margin-right-#{$name}{
-		margin-right: --margin-#{$name};
+		margin-right:var(--margin-#{$name});
 	}
 	.margin-bottom-#{$name}{
-		margin-bottom: --margin-#{$name};
+		margin-bottom:var(--margin-#{$name});
 	}
 	.margin-left-#{$name}{
-		margin-left: --margin-#{$name};
+		margin-left:var(--margin-#{$name});
 	}
-	.margin-#{$name}{
-		margin: --margin-#{$name};
+	.margin-#{$name},.margin-a-#{$name},.margin-all-#{$name}{
+		margin:var(--margin-#{$name});
 	}
 
-	.margin-inline-start-#{$name}{
-		margin-inline-start: --margin-#{$name};
+	.margin-inline-start-#{$name},.margin-x-start-#{$name}{
+		margin-inline-start:var(--margin-#{$name});
 	}
-	.margin-inline-end-#{$name}{
-		margin-inline-end: --margin-#{$name};
+	.margin-inline-end-#{$name},.margin-inline-end-#{$name}{
+		margin-inline-end:var(--margin-#{$name});
 	}
-	.margin-block-#{$name}{
-		margin-block: --margin-#{$name};
+	.margin-block-#{$name},.margin-x-#{$name}{
+		margin-block:var(--margin-#{$name});
 	}
-	.margin-block-start-#{$name}{
-		margin-block-start: --margin-#{$name};
+	.margin-block-start-#{$name},.margin-y-start-#{$name}{
+		margin-block-start:var(--margin-#{$name});
 	}
-	.margin-block-end-#{$name}{
-		margin-block-end: --margin-#{$name};
+	.margin-block-end-#{$name},.margin-y-end-#{$name}{
+		margin-block-end:var(--margin-#{$name});
 	}
 }
