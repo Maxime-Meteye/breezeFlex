@@ -13,7 +13,7 @@ $col_max_amount: 12;
 
 
 
-$spacing :"none" 0,"0" 0 , "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
+$spacing :"none" 0,"0" 0 ,"xxs" 0.12em , "xs" 0.25em, "s" 0.5em, "m" 1em, "l" 2em, "xl" 4em;
 
 
 $themes :(
@@ -25,7 +25,7 @@ $themes :(
 	"warning" #f19113,
 	"dark" #191e24,
 	"light" #ffffff
-	);
+);
 
 $tint-opacity: 0.3;
 $btn-default-opacity : 1;

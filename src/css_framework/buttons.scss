@@ -78,7 +78,6 @@
 }
 
 
-
 @each $name, $color, $text-color in options.$themes{
 
 	.btn-#{$name}{
@@ -93,12 +92,8 @@
 		--tint-color: var(--#{$name}-color);
 		--tint-opacity: #{options.$tint-opacity};
 	}
-
-	.background-#{$name}{
-		background-color: rgb(var(--#{$name}-color));
-	}
-
 }
+
 
 .btn-hover-transparent{
 	--background-on-hover: rgba(
@@ -110,4 +105,62 @@
 		var(--tint-color, #ffffff),
 		var(--tint-opacity,0.0))
 	;
+}
+
+
+
+
+
+@each $name, $color, $text-color in options.$themes{
+
+	.theme-#{$name}{
+		--background-color : var(--#{$name}-color);
+		--text-color : var(--#{$name}-text-color);
+		--border-color : var(--#{$name}-border-color);
+		--border-style : solid;
+		--border-width : 50px;
+		background-color: rgb(var(--background-color));
+		color: var(--text-color);
+	}
+}
+
+
+.border{
+	border: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-top{
+	border-top: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-right{
+	border-right: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-bottom{
+	border-bottom: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-left{
+	border-left: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block{
+	border-block: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block-start{
+	border-block-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block-end{
+	border-block-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline{
+	border-inline: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline-start{
+	border-inline-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline-end{
+	border-inline-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+
+@each $name, $width in options.$spacing{
+	.border-#{$name}{
+		--border-width-scaled: #{$width};
+	}
 }

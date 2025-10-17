@@ -3,18 +3,20 @@
 
 @each $name, $padding in options.$spacing {
 
-	--padding-#{$name} : #{$padding};
+	:root{
+		--padding-#{$name} : #{$padding};
+	}
 
-	.padding-t-#{$name}{
+	.padding-top-#{$name}{
 		padding-top: var(--padding-#{$name});
 	}
-	.padding-r-#{$name}{
+	.padding-right-#{$name}{
 		padding-right: var(--padding-#{$name});
 	}
-	.padding-b-#{$name}{
+	.padding-bottom-#{$name}{
 		padding-bottom: var(--padding-#{$name});
 	}
-	.padding-l-#{$name}{
+	.padding-left-#{$name}{
 		padding-left: var(--padding-#{$name});
 	}
 	.padding-#{$name}{
