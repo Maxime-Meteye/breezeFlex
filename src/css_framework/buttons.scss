@@ -57,54 +57,73 @@
 //## BTN classes
 
 .btn{
+	color: var(--text-color);
 	border-radius: 1em;
 	width: auto;
 	height: auto;
 	min-width: 2em;
 	min-height: 1em;
 	padding: 1px 6px;
-	background-color: rgb($color: var(--btn-default-color), $alpha: var(--btn-opacity) );
+	background-color: rgb($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
 
 	transition: all 0.15s ease-in;
 }
-.btn:hover{
+
+.btn-transparent{
+	--btn-opacity: #{options.$tint-opacity};
+	border-radius: 1em;
+	color: grey;
+	width: auto;
+	height: auto;
+	min-width: 2em;
+	min-height: 1em;
+	padding: 1px 6px;
+	background-color: rgba($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
+	color: black;
+	transition: all 0.15s ease-in;
+}
+.btn:hover,.btn-transparent:hover{
 	transform: translateY(-2px);
-	background-color: var(--background-on-hover);
+	background-color: rgba($color:var(--background-on-hover), $alpha: var(--btn-opacity));
 }
 
-.btn:active{
+.btn:active,.btn-transparent:active{
 	transform: translateY(2px);
-	background-color: var(--background-on-active);
+	background-color: rgba($color:var(--background-on-active), $alpha: var(--btn-opacity));
 }
 
 
 @each $name, $color, $text-color in options.$themes{
 
 	.btn-#{$name}{
-		background-color: rgb(var(--#{$name}-color));
-		color: var(--#{$name}-text-color);
-		--background-on-hover : rgba(var(--#{$name}-hover) , var(--btn-opacity));
-		--background-on-active : rgba(var(--#{$name}-active),var(--btn-opacity));
+		--background-color : var(--#{$name}-color); 
+		//background-color: rgb(var(--#{$name}-color));
+		--text-color: var(--#{$name}-text-color);
+		--background-on-hover : var(--#{$name}-hover);
+		--background-on-active : var(--#{$name}-active);
 		border: var(--border, solid 2px var(--#{$name}-border-color));
 	}
 
 	.#{$name}-tint{
+		--background-color: var(--#{$name}-color);
 		--tint-color: var(--#{$name}-color);
-		--tint-opacity: #{options.$tint-opacity};
+	}
+	.hover-#{$name}-tint:hover{
+		--background-color: var(--#{$name}-hover);
+		--btn-opacity: #{options.$tint-opacity};
+	}
+	.active-#{$name}-tint:active{
+		--background-color: var(--#{$name}-hover);
+		--btn-opacity: #{options.$tint-opacity};
 	}
 }
 
 
-.btn-hover-transparent{
-	--background-on-hover: rgba(
-		var(--tint-color, #ffffff),
-		var(--tint-opacity,0.0));
+.btn-hover-transparent:hover{
+	--btn-opacity : #{options.$tint-opacity};
 }
-.btn-active-transparent{
-	--background-on-active: rgba(
-		var(--tint-color, #ffffff),
-		var(--tint-opacity,0.0))
-	;
+.btn-active-transparent:active{
+	--btn-opacity : #{options.$tint-opacity};
 }
 
 
