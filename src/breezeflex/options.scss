@@ -8,7 +8,7 @@ $sizes:
 	"xl" 1200px 1400px,
 	"xxl" 1400px -1; 
 
-//# Max divisions of columns and rows.
+//# Max divisions of columns.
 $col_max_amount: 12;
 
 
@@ -30,6 +30,9 @@ $themes :(
 $tint-opacity: 0.3;
 $btn-default-opacity : 1;
 $btn-default-color : #ffffff;
+
+$default-border-width: 0.12em;
+$default-border-radius: 0.25em;
 
 $shadow-sizes : "xs" 0px, "s" 2px, "m" 3px, "l" 4px, "xl" 6px;
 $shadow-offset : 4px;

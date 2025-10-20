@@ -1,0 +1,17 @@
+@use 'theme';
+
+form{
+	display: grid;
+}
+
+input{
+	background-color: rgb(var(--background-color));
+	border: var(--border-color) var(--border-style) var(--border-width) ;
+	border-radius: var(--border-radius);
+	margin-block: 0.2em;
+	color: var(--text-color);
+}
+
+input:focus-visible{
+	outline: var(--text-color) var(--border-style) var(--border-width);
+}

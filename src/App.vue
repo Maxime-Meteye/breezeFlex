@@ -1,6 +1,6 @@
 <template>
 <nav >
-  <button popovertarget="navmenu" class="hamburger">=</button>
+  <button popovertarget="navmenu" class="hamburger btn btn-info">=</button>
   <nav id='navmenu' popover :class="{ 'sidenav-open': is_menu_open}">
     <RouterLink to="/" >Go to Home</RouterLink>
     <RouterLink to="/ourlocation">Find us</RouterLink>

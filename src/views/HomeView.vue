@@ -29,5 +29,25 @@
 			<button class="btn btn-light">light</button>
 			<button class="btn btn-dark">dark</button>
 		</div>
+		<div class="padding-m theme-primary">
+			<form class="form">
+				<label class="padding-xs">
+					field 1
+					<input type="text" name="field1"></input>
+				</label>
+				<label class="padding-xs">
+					field 1
+					<input type="text" name="field1"></input>
+				</label>
+				<label class="padding-xs">
+					field 1
+					<input type="text" name="field1"></input>
+				</label>
+				<label class="padding-xs">
+					field 1
+					<input type="text" name="field1"></input>
+				</label>
+			</form>
+		</div>
     </div>
 </template>

@@ -1,0 +1,43 @@
+@use 'user_options/user_options' as options;
+@use 'theme';
+
+
+.border,.border-a,.border-all{
+	border: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-top{
+	border-top: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-right{
+	border-right: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-bottom{
+	border-bottom: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-left{
+	border-left: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block,.border-y{
+	border-block: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block-start,.border-y-start{
+	border-block-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-block-end,.border-y-end{
+	border-block-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline,.border-x{
+	border-inline: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline-start,.border-x-start{
+	border-inline-start: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+.border-inline-end,.border-x-end{
+	border-inline-end: var(--border-width-scaled, var(--border-width)) var(--border-style) var(--border-color);
+}
+
+@each $name, $width in options.$spacing{
+	.border-#{$name}{
+		--border-width-scaled: #{$width};
+	}
+}

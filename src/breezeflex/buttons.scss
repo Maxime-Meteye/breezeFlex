@@ -12,6 +12,7 @@
 //## BTN classes
 
 .btn{
+	display: inline-block;
 	color: var(--text-color);
 	border-radius: 1em;
 	width: auto;
@@ -25,6 +26,7 @@
 }
 
 .btn-transparent{
+	display: inline-block;
 	--btn-opacity: #{options.$tint-opacity};
 	border-radius: 1em;
 	color: grey;
@@ -38,12 +40,10 @@
 	transition: all 0.15s ease-in;
 }
 .btn:hover,.btn-transparent:hover{
-	transform: translateY(-2px);
 	background-color: rgba($color:var(--background-on-hover), $alpha: var(--btn-opacity));
 }
 
 .btn:active,.btn-transparent:active{
-	transform: translateY(2px);
 	background-color: rgba($color:var(--background-on-active), $alpha: var(--btn-opacity));
 }
 

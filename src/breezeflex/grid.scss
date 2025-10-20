@@ -30,6 +30,33 @@
 	@include col();
 }
 
+.no-wrap{
+	flex-wrap: nowrap;
+}
+
+
+.align-center{
+	align-content: center;
+}
+.align-top,.align-start{
+	align-content: flex-start;
+}
+
+.align-bottom,.align-end{
+	align-content: flex-end;
+}
+
+.justify-center{
+	justify-content: center;
+}
+.justify-left,.justify-start{
+	justify-content: flex-start;
+}
+.justify-right,.justify-end{
+	justify-content: flex-end;
+}
+
+
 @mixin col-offset($percentage){
 	margin-inline-start: $percentage;
 }
