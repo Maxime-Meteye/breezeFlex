@@ -1,9 +1,6 @@
 @use 'sass:color';
-@use 'sass:map';
-@use 'sass:string';
 @use 'user_options/user_options' as options;
 @use 'utils';
-
 
 :root{
 
@@ -52,83 +49,6 @@
 		--#{$name}-border-color : #{color.scale($color, $lightness: -50%, $space: hsl)};
 	}
 }
-
-
-//## BTN classes
-
-.btn{
-	color: var(--text-color);
-	border-radius: 1em;
-	width: auto;
-	height: auto;
-	min-width: 2em;
-	min-height: 1em;
-	padding: 1px 6px;
-	background-color: rgb($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
-
-	transition: all 0.15s ease-in;
-}
-
-.btn-transparent{
-	--btn-opacity: #{options.$tint-opacity};
-	border-radius: 1em;
-	color: grey;
-	width: auto;
-	height: auto;
-	min-width: 2em;
-	min-height: 1em;
-	padding: 1px 6px;
-	background-color: rgba($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
-	color: black;
-	transition: all 0.15s ease-in;
-}
-.btn:hover,.btn-transparent:hover{
-	transform: translateY(-2px);
-	background-color: rgba($color:var(--background-on-hover), $alpha: var(--btn-opacity));
-}
-
-.btn:active,.btn-transparent:active{
-	transform: translateY(2px);
-	background-color: rgba($color:var(--background-on-active), $alpha: var(--btn-opacity));
-}
-
-
-@each $name, $color, $text-color in options.$themes{
-
-	.btn-#{$name}{
-		--background-color : var(--#{$name}-color); 
-		//background-color: rgb(var(--#{$name}-color));
-		--text-color: var(--#{$name}-text-color);
-		--background-on-hover : var(--#{$name}-hover);
-		--background-on-active : var(--#{$name}-active);
-		border: var(--border, solid 2px var(--#{$name}-border-color));
-	}
-
-	.#{$name}-tint{
-		--background-color: var(--#{$name}-color);
-		--tint-color: var(--#{$name}-color);
-	}
-	.hover-#{$name}-tint:hover{
-		--background-color: var(--#{$name}-hover);
-		--btn-opacity: #{options.$tint-opacity};
-	}
-	.active-#{$name}-tint:active{
-		--background-color: var(--#{$name}-hover);
-		--btn-opacity: #{options.$tint-opacity};
-	}
-}
-
-
-.btn-hover-transparent:hover{
-	--btn-opacity : #{options.$tint-opacity};
-}
-.btn-active-transparent:active{
-	--btn-opacity : #{options.$tint-opacity};
-}
-
-
-
-
 
 @each $name, $color, $text-color in options.$themes{
 
