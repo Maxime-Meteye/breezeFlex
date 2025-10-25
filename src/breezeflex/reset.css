@@ -9,6 +9,7 @@
 	max-width: 100%;
     height: auto;
 	overflow: hidden;
+	overflow-y: auto;
 	min-width: fit-content;
 
 	list-style: none;
@@ -24,3 +25,8 @@
 head{
   display: none;  
 }
+
+body{
+	width: 100%;
+}
+

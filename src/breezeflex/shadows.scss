@@ -2,43 +2,60 @@
 
 
 //## box-shadows generator
-
-$shadow-color : options.$shadow-color;
-$shadow-blur : options.$shadow-blur;
-$shadow-offset : options.$shadow-offset;
-
-@mixin shadow($shadow-spread){
-	box-shadow: $shadow-offset $shadow-offset $shadow-blur $shadow-spread $shadow-color;
+:root{
+	--shadow-color : #{options.$shadow-color};
+	--shadow-blur : #{options.$shadow-blur};
+	--shadow-offset : #{options.$shadow-offset};
+	--shadow-offset-x : var(--shadow-offset);
+	--shadow-offset-y : var(--shadow-offset);
+	--text-shadow-blur : #{options.$text-shadow-blur};
 }
-@mixin inset-shadow($shadow-spread){
-	box-shadow: inset $shadow-offset $shadow-offset $shadow-blur $shadow-spread $shadow-color;
+
+@mixin shadow(){
+	box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+}
+@mixin text-shadow(){
+	text-shadow: var(--shadow-color) var(--shadow-offset-x) var(--shadow-offset-y) var(--text-shadow-blur)
+}
+@mixin inset-shadow(){
+	box-shadow: inset var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) -var(--shadow-spread) var(--shadow-color);
 }
 
 @each $name, $space in options.$shadow-sizes{
 
 	.shadow-#{$name}{
-		@include shadow($space);
+		--shadow-spread: #{$space};
+		@include shadow();
+
 	}
 
 	.shadow-#{$name}-on-hover:hover{
-		@include shadow($space);
+		--shadow-spread: #{$space};
+		@include shadow();
 	}
 
 	.shadow-#{$name}-on-active:active{
-		@include shadow($space);
+		--shadow-spread: #{$space};
+		@include shadow();
+	}
+
+	.text-shadow-#{$name}{
+		--shadow-spread: #{$space};
+		@include text-shadow();
 	}
 
 	.inset-shadow-#{$name}{
-		@include inset-shadow($space);
+		--shadow-spread: #{$space};
+		@include inset-shadow();
 	}
 
 	.inset-shadow-#{$name}-on-hover:hover{
-		@include inset-shadow($space);
+		--shadow-spread: #{$space};
+		@include inset-shadow();
 	}
 	.inset-shadow-#{$name}-on-active:active{
-		@include inset-shadow($space);
+		--shadow-spread: #{$space};
+		@include inset-shadow();
 	}
 }
-
-//## TODO Faire une classe pour l'ombre du texte
 

@@ -1,8 +1,6 @@
 TODO Document as html website
 TODO add fade in fade out support. Define transitions for new element using newish css
 
-TODO  IMPORTANT Rajouter les paddings, les margins, etc
-
 
 TODO documment your code so it's understandable.
 Write a full fledged markdown documentation.
@@ -14,21 +12,6 @@ TODO Commit more
 
 TODO Always when possible define css variables in lieu of scss. For the easy customisation of css users.
 
-
-TODO Make 
-	lists
-	input
-	select
-	radio buttons
-	forms
-	checkbox
-	range
-
-
-TODO inactive button style with gray scale maybe
-
 TODO btn small big round
 
 TODO basic style for router-link-active
-
-TODO Make shadows and breakpoint use css var

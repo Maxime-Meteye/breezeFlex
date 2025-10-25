@@ -28,13 +28,17 @@ $themes :(
 );
 
 $tint-opacity: 0.3;
-$btn-default-opacity : 1;
+$box-default-opacity : 1;
 $btn-default-color : #ffffff;
+$btn-default-border-color : #000000;
 
 $default-border-width: 0.12em;
 $default-border-radius: 0.25em;
 
-$shadow-sizes : "xs" 0px, "s" 2px, "m" 3px, "l" 4px, "xl" 6px;
+$initial-outline-width : 0px;
+
+$shadow-sizes : "xs" -5px, "s" 2px, "m" 3px, "l" 4px, "xl" 6px;
 $shadow-offset : 4px;
 $shadow-blur : 5px;
 $shadow-color: rgba(6, 5, 5, 0.8);
+$text-shadow-blur : 3px;

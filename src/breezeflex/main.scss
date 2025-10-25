@@ -12,7 +12,7 @@
 @use 'theme';
 @use 'border';
 @use 'input';
-
+@use 'utils';
 //##Debug value
 
 
@@ -73,4 +73,16 @@ $debug: false;
 .transparent-blur-heavy{
 	background-color: rgba($color: #000000, $alpha: 0.0);
 	backdrop-filter: blur(8px);
+}
+
+
+.round{
+	border-radius: 1em;
+}
+
+
+
+*:disabled{
+	opacity: 0.6;
+	filter: grayscale(80%) !important;
 }

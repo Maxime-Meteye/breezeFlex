@@ -4,7 +4,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	width: 100vw;
 }
 
 
@@ -12,13 +11,17 @@
 
 @mixin row{
 	display: flex;
-	flex: 1;
 	flex-wrap: wrap;
 	box-sizing: border-box;
+	flex-grow: 1;
+	flex-basis: 100%;
+	flex-shrink: 0;
 }
 
 @mixin col{
-	flex:0 0 auto;
+	flex-basis: 0;
+	flex-shrink: 1;
+	flex-grow: 1;
 	box-sizing: border-box;
 }
 
@@ -66,15 +69,9 @@
 	@include col-offset(0);
 }
 
-@mixin row-size ($percentage){
-	@include row();
-	height: $percentage;
-	flex: 0 0 auto;
-}
-
 @mixin col-size($percentage){
 	@include col();
-	width: $percentage;
+	flex-basis: $percentage;
 }
 
 
@@ -91,9 +88,8 @@
 		@for $i from 1 through options.$col_max_amount{
 
 
-			//TODO Refactor col rows and offset creation so it uses a generator;
 
-			$percentage: calc( (100% / options.$col_max_amount) * $i); 
+			$percentage: calc( ((100% / options.$col_max_amount) * $i)) - 1%; 
 
 			.col-#{$i}{
 				@include col-size($percentage);
@@ -102,20 +98,19 @@
 			.col-offset-#{$i}{
 				@include col-offset($percentage)
 			}
-
-			.row-#{$i}{
-				@include row-size($percentage);
-			}
 		}
 	} @else{
 		@media screen and (width >= $size) {
 			.col-#{$name}-offset-0{
 					@include col-offset(0);
 			}
-
+			.col-#{$name}{
+				@include col();
+				flex:1 0 auto;
+			}
 			@for $i from 1 through options.$col_max_amount{
 
-				$percentage: calc( (100% / options.$col_max_amount) * $i);
+				$percentage: calc( ((100% / options.$col_max_amount) * $i) - 1%);
 				
 				.col-#{$name}-#{$i}{
 					@include col-size($percentage);
@@ -123,10 +118,6 @@
 
 				.col-#{$name}-offset-#{$i}{
 					@include col-offset($percentage);
-				}
-
-				.row-#{$name}-#{$i}{
-					@include row-size($percentage);
 				}
 			}
 		}

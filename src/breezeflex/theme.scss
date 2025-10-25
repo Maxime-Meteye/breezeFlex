@@ -4,7 +4,7 @@
 
 :root{
 
-	--btn-opacity : #{options.$btn-default-opacity};
+	--box-opacity : #{options.$box-default-opacity};
 	--btn-default-color : #{options.$btn-default-color};
 	--default-border-width : #{options.$default-border-width};
 	--default-border-radius : #{options.$default-border-radius} ;
@@ -18,11 +18,23 @@
 			--#{$name}-text-color : #{$text-color};
 		}
 
-		--#{$name}-color : 
-			#{color.channel($color,"red", $space: rgb)},
-			#{color.channel($color,"green", $space: rgb)},
-			#{color.channel($color,"blue", $space: rgb)}
+		--r-#{$name}-color : #{color.channel($color,"red", $space: rgb)};
+		--g-#{$name}-color : #{color.channel($color,"green", $space: rgb)};
+		--b-#{$name}-color : #{color.channel($color,"blue", $space: rgb)};
+		--a-#{$name}-color : var(--box-opacity);
+
+		--#{$name}-color : rgb(
+			var(--r-#{$name}-color),
+			var(--g-#{$name}-color),
+			var(--b-#{$name}-color)
+		);
+
+		--rgb-#{$name}-color : 
+			var(--r-#{$name}-color),
+			var(--g-#{$name}-color),
+			var(--b-#{$name}-color)
 		;
+		--rgba-#{$name}-color : rgba(var(--rgb-#{$name}-color), var(--box-opacity));
 
 		$hover-color:white;
 		@if color.channel($text-color, "lightness",$space : hsl) <= 50% {
@@ -49,7 +61,18 @@
 			#{color.channel($active-color,"green", $space: rgb)},
 			#{color.channel($active-color,"blue", $space: rgb)}
 		;
-		--#{$name}-border-color : #{color.scale($color, $lightness: -50%, $space: hsl)};
+
+		@if color.channel($color,"lightness", $space: hsl) >= 50% {
+			--#{$name}-border-color : #{color.scale($color, $lightness: -40%, $space: hsl)};
+		}@else{
+			--#{$name}-border-color : #{color.scale($color, $lightness: +40%, $space: hsl)};
+		}
+
+		@if color.channel($color,"lightness", $space: hsl) >= 50% {
+			--#{$name}-outline-color : #{color.scale($color, $lightness: -25%, $space: hsl)};
+		}@else{
+			--#{$name}-outline-color : #{color.scale($color, $lightness: +25%, $space: hsl)};
+		}
 	}
 }
 
@@ -62,8 +85,11 @@
 		--border-style : solid;
 		--border-width : var(--default-border-width);
 		--border-radius : var(--default-border-radius);
+		--outline-color : var(--#{$name}-outline-color);
+		--background-on-hover : var(--#{$name}-hover);
+		--background-on-active : var(--#{$name}-active);
 		
-		background-color: rgb(var(--background-color));
+		background-color: var(--background-color);
 		color: var(--text-color);
 	}
 }

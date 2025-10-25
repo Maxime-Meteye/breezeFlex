@@ -4,54 +4,57 @@
 @use 'theme';
 
 :root{
-	--btn-opacity : #{options.$btn-default-opacity};
+	--box-opacity : #{options.$box-default-opacity};
+	--tint-opacity : #{options.$tint-opacity};
 	--btn-default-color : #{options.$btn-default-color};
+	--btn-default-border-color : #{options.$btn-default-border-color};
 }
 
 
 //## BTN classes
 
-.btn{
+@mixin btn(){
 	display: inline-block;
 	color: var(--text-color);
-	border-radius: 1em;
+	border-radius: 0.5em;
 	width: auto;
 	height: auto;
 	min-width: 2em;
 	min-height: 1em;
 	padding: 1px 6px;
-	background-color: rgb($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
-
+	background-color: var(--background-color);
+	border: var(--border, solid 2px var(--border-color, var(--btn-default-border-color)));
 	transition: all 0.15s ease-in;
+}
+
+
+.btn{
+	@include btn();
+}
+
+.btn-round{
+	@include btn();
+	border-radius: 1em;
 }
 
 .btn-transparent{
-	display: inline-block;
-	--btn-opacity: #{options.$tint-opacity};
-	border-radius: 1em;
-	color: grey;
-	width: auto;
-	height: auto;
-	min-width: 2em;
-	min-height: 1em;
-	padding: 1px 6px;
-	background-color: rgba($color: var(--background-color,var(--btn-default-color)), $alpha: var(--btn-opacity) );
-	color: black;
-	transition: all 0.15s ease-in;
-}
-.btn:hover,.btn-transparent:hover{
-	background-color: rgba($color:var(--background-on-hover), $alpha: var(--btn-opacity));
+	@include btn();
+	--box-opacity: #{options.$tint-opacity};
 }
 
-.btn:active,.btn-transparent:active{
-	background-color: rgba($color:var(--background-on-active), $alpha: var(--btn-opacity));
+.btn:hover,.btn-transparent:hover,.btn-round:hover{
+	background-color: rgba($color:var(--background-on-hover), $alpha: var(--box-opacity));
+}
+
+.btn:active,.btn-transparent:active,.btn-round:hover{
+	background-color: rgba($color:var(--background-on-active), $alpha: var(--box-opacity));
 }
 
 
 @each $name, $color, $text-color in options.$themes{
 
 	.btn-#{$name}{
-		--background-color : var(--#{$name}-color); 
+		--background-color : var(--rgba-#{$name}-color); 
 		//background-color: rgb(var(--#{$name}-color));
 		--text-color: var(--#{$name}-text-color);
 		--background-on-hover : var(--#{$name}-hover);
@@ -60,24 +63,24 @@
 	}
 
 	.#{$name}-tint{
-		--background-color: var(--#{$name}-color);
-		--tint-color: var(--#{$name}-color);
+		--background-color: var(--rgba-#{$name}-color);
+		--tint-color: var(--rgb-#{$name}-color);
 	}
 	.hover-#{$name}-tint:hover{
 		--background-color: var(--#{$name}-hover);
-		--btn-opacity: #{options.$tint-opacity};
+		--box-opacity: #{options.$tint-opacity};
 	}
 	.active-#{$name}-tint:active{
 		--background-color: var(--#{$name}-hover);
-		--btn-opacity: #{options.$tint-opacity};
+		--box-opacity: #{options.$tint-opacity};
 	}
 }
 
 
 .btn-hover-transparent:hover{
-	--btn-opacity : #{options.$tint-opacity};
+	--box-opacity : #{options.$tint-opacity};
 }
 .btn-active-transparent:active{
-	--btn-opacity : #{options.$tint-opacity};
+	--box-opacity : #{options.$tint-opacity};
 }
 

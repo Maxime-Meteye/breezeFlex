@@ -7,6 +7,17 @@
 		--margin-#{$name} : #{$margin};
 	}
 
+	.x-gap-#{$name} >*, .horizontal-gap-#{$name}, .inline-gap-#{$name}{
+		display: flex;
+		column-gap: var(--margin-#{$name});
+		flex-shrink: 1;
+	}
+	.y-gap-#{$name}, .vertical-gap-#{$name}, .block-gap-#{$name}{
+		display: flex;
+		row-gap: var(--margin-#{$name});
+		flex-shrink: 1;
+	}
+
 	.margin-top-#{$name}{
 		margin-top:var(--margin-#{$name});
 	}
