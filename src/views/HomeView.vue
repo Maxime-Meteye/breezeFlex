@@ -71,9 +71,9 @@
 						checkbox
 						<input type="checkbox" class="input"></input>
 					</label>
-					<label class="col-2 padding-xs knob-shadow">
+					<label class="col-2 padding-xs">
 						checkbox switch qsfqs
-						<input type="checkbox" class="input switch"></input>
+						<input type="checkbox" class="input switch knob-shadow"></input>
 					</label>
 					<label class="col-2 padding-xs">
 						round checkbox switch
