@@ -29,31 +29,12 @@
 
 	}
 
-	.shadow-#{$name}-on-hover:hover{
-		--shadow-spread: #{$space};
-		@include shadow();
-	}
-
-	.shadow-#{$name}-on-active:active{
-		--shadow-spread: #{$space};
-		@include shadow();
-	}
-
 	.text-shadow-#{$name}{
 		--shadow-spread: #{$space};
 		@include text-shadow();
 	}
 
 	.inset-shadow-#{$name}{
-		--shadow-spread: #{$space};
-		@include inset-shadow();
-	}
-
-	.inset-shadow-#{$name}-on-hover:hover{
-		--shadow-spread: #{$space};
-		@include inset-shadow();
-	}
-	.inset-shadow-#{$name}-on-active:active{
 		--shadow-spread: #{$space};
 		@include inset-shadow();
 	}

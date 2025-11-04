@@ -3,33 +3,12 @@
         <h1>
             home
         </h1>
-        <div class="container theme-primary border-top border-l x-gap-m">
-			<div class="row row-justify-left">
-				<div class="col">Test1</div>
-				<div class="col">Test2</div>
-				<div class="col">Test3</div>
-				<div class="col">Test4</div>
-				<div class="col">Test5</div>
-				<div class="col">Test6</div>
-				<div class="col">Test7</div>
-				<div class="col">Test8</div>
-				<div class="col">Test9</div>
-				<div class="col">Test10</div>
-				<div class="col">Test1sssssssssssssssssssss1</div>
-				<div class="col">Test12</div>
-				<section class="col col-offset-1 col-s-offset-0 col-s-12">contains the meat of the page</section>
-			</div>
-			<section class="row">
-				<div class=" col-1 col-m-6 ">3</div>
-			</section>
-			<div class="row row-justify-left">
-				<div class="col-6">lorqsfsqfqsqsf</div>
-				<div class="col-6">lorqsfsq22222fqsqsf</div>
-				<div class="col-6">lorqsfsq22222fqsqsf</div>
-			</div>
-			<div class="row row-justify-left">
-				<div class="col-12">lorqsfsqfqsqsf</div>
-			</div>
+        <div class="container theme-primary border-top border-l">
+			<div class="col-12 row-2">col-12/row-2</div>
+			<div class="col-3 row-10 hidden-only-xs hidden-only-s">col-3/row-10</div>
+			<div class="col-12 row-10 col-m-6">col-6/row-12</div>
+			<div class="col-3 row-10 hidden-only-xs hidden-only-s">col-3 row-12</div>
+			<div class="col-12 row-2">col-12 row-2</div>
         </div>
 		<div class="background-primary margin-block-m padding-block-xs">
 			<button class="btn primary-tint btn-hover-transparent btn-primary" @click=" active_theme = 'theme-primary'" >primary</button>

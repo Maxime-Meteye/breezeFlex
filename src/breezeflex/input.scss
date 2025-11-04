@@ -3,7 +3,7 @@
 @use 'user_options/user_options' as options;
 
 :root{
-	--initial-ouline-width : #{options.$initial-outline-width};
+	--initial-outline-width : #{options.$initial-outline-width};
 }
 
 @mixin input(){
@@ -26,7 +26,13 @@
 	gap: 0.2em;
 }
 
-.input{
+.input,
+.input::-webkit-color-swatch-wrapper,
+.input[type="color" i],
+.input[type="checkbox" i],
+.input::-webkit-color-swatch-wrapper,
+.input[type="radio" i],
+input[type="range" i]{
 	@include input();
 }
 /*
@@ -46,18 +52,12 @@ label.row  .input{
 }
 
 .outline-on-select{
-	outline: var(--outline-color) var(--border-style) var(--initial-ouline-width);
+	outline: var(--outline-color) var(--border-style) var(--initial-outline-width);
 	transition: outline 0.25s ease-in, border-color 0.25s ease-in,;
 }
 
-.outline-on-select:focus-visible{
-	outline: var(--outline-color) var(--border-style) var(--border-width);
-}
-
-.outline-on-checked:checked{
-	outline: var(--outline-color) var(--border-style) var(--border-width);
-}
-
+.outline-on-select:focus-visible,
+.outline-on-checked:checked,
 .outline-on-checked:hover{
 	outline: var(--outline-color) var(--border-style) var(--border-width);
 }
@@ -75,16 +75,10 @@ label.row  .input{
 }
 
 .input::-webkit-color-swatch-wrapper{
-	@include input();
 	min-height: 2em;
 	min-width: 2em;
 	margin: 0;
-	outline: 0;
 	border: none;
-}
-
-.input[type="color" i]{
-	@include input();
 }
 
 
@@ -98,9 +92,6 @@ label.row  .input{
 
 	flex-grow: 0;
 	position: relative;
-	appearance: none;
-  	-webkit-appearance: none;
-  	-moz-appearance: none;
 	position: relative;
 	height: 2em;
 	max-width: 2em;
@@ -112,13 +103,12 @@ label.row  .input{
 
 }
 
-.input[type="checkbox" i]:focus-visible{
+
+
+
+.input[type="checkbox" i]:focus-visible,.input[type="checkbox" i]:hover{
 	outline: var(--outline-color) var(--border-style) var(--border-width);
 
-}
-
-.input[type="checkbox" i]:hover	{
-	outline: var(--outline-color) var(--border-style) var(--border-width);
 }
 
 .input[type="checkbox" i]:checked{
@@ -194,9 +184,7 @@ label:has(.input[type="radio" i]){
 }
 
 .input[type="radio" i]{
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
+	
 	accent-color: var(--border-color);
 
 	width: 1em;
@@ -242,9 +230,6 @@ label:has(.input[type="radio" i]){
 
 input[type="range" i]{
 	height: 1em;
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
 	background-color: var(--border-color);
 	overflow: hidden;
 }
@@ -262,7 +247,7 @@ input[type="range" i]{
 	height: 1em;
 	width: 1em;
 	border-radius: 50%;
-	background: var(--text-color); /* blue thumb */
+	background: var(--text-color);
 	box-shadow: var(--knob-shadow), -100vw 0 0 calc(100vw - .5em) var(--border-color), inset 0 0 0 -1em var(--border-color);
 	transition: box-shadow 0.15s ease-in, outline 0.2s ease-in;
 

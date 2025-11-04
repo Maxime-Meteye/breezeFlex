@@ -1,4 +1,6 @@
 
+
+
 *{
 	margin: 0;
     padding: 0;
@@ -7,25 +9,21 @@
 	border: 0;
     font-size: 100%;
 	max-width: 100%;
+	
     height: auto;
-	overflow: hidden;
-	overflow-y: auto;
+	overflow:hidden;
+	overflow-y:hidden;
+
 	min-width: fit-content;
 
 	list-style: none;
 	box-sizing: border-box;
 	text-wrap: pretty;
-	line-height: 1.7em;
+	line-height: 1.6em;
 
 	text-align: center;
 	vertical-align: middle;
 }
-
-
-head{
-  display: none;  
-}
-
 body{
 	width: 100%;
 }

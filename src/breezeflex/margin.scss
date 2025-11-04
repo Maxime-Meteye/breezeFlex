@@ -2,20 +2,19 @@
 
 
 
-@each $name, $margin in options.$spacing{
-	:root{
+:root{
+	@each $name, $margin in options.$spacing{
 		--margin-#{$name} : #{$margin};
 	}
+}
 
-	.x-gap-#{$name} >*, .horizontal-gap-#{$name}, .inline-gap-#{$name}{
-		display: flex;
+@each $name, $margin in options.$spacing{
+
+	.x-gap-#{$name}{
 		column-gap: var(--margin-#{$name});
-		flex-shrink: 1;
 	}
-	.y-gap-#{$name}, .vertical-gap-#{$name}, .block-gap-#{$name}{
-		display: flex;
+	.y-gap-#{$name}{
 		row-gap: var(--margin-#{$name});
-		flex-shrink: 1;
 	}
 
 	.margin-top-#{$name}{
@@ -30,23 +29,24 @@
 	.margin-left-#{$name}{
 		margin-left:var(--margin-#{$name});
 	}
-	.margin-#{$name},.margin-a-#{$name},.margin-all-#{$name}{
+	.margin-#{$name}{
 		margin:var(--margin-#{$name});
 	}
 
-	.margin-inline-start-#{$name},.margin-x-start-#{$name}{
+	.margin-inline-start-#{$name}{
 		margin-inline-start:var(--margin-#{$name});
 	}
-	.margin-inline-end-#{$name},.margin-inline-end-#{$name}{
+	.margin-inline-end-#{$name}{
 		margin-inline-end:var(--margin-#{$name});
 	}
-	.margin-block-#{$name},.margin-x-#{$name}{
+	.margin-block-#{$name}{
 		margin-block:var(--margin-#{$name});
 	}
-	.margin-block-start-#{$name},.margin-y-start-#{$name}{
+	.margin-block-start-#{$name}{
 		margin-block-start:var(--margin-#{$name});
 	}
-	.margin-block-end-#{$name},.margin-y-end-#{$name}{
+	.margin-block-end-#{$name}{
 		margin-block-end:var(--margin-#{$name});
 	}
+
 }

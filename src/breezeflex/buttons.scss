@@ -28,17 +28,15 @@
 }
 
 
-.btn{
+[class*="btn-"],.btn{
 	@include btn();
 }
 
 .btn-round{
-	@include btn();
 	border-radius: 1em;
 }
 
 .btn-transparent{
-	@include btn();
 	--box-opacity: #{options.$tint-opacity};
 }
 
@@ -55,7 +53,6 @@
 
 	.btn-#{$name}{
 		--background-color : var(--rgba-#{$name}-color); 
-		//background-color: rgb(var(--#{$name}-color));
 		--text-color: var(--#{$name}-text-color);
 		--background-on-hover : var(--#{$name}-hover);
 		--background-on-active : var(--#{$name}-active);

@@ -20,6 +20,9 @@ TODO basic style for router-link-active
 
 TODO use release
 
-TODO optimize classes
+TODO optimize classes use string concatenation to avoid having to redefine common behavior for iterated classes.
 
 TODO Find what can make text input white in some os/browser with numlock capslock
+
+
+TODO make inline-block class and block

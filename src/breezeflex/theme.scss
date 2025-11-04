@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:math';
 @use 'user_options/user_options' as options;
 @use 'utils';
 
@@ -18,9 +19,9 @@
 			--#{$name}-text-color : #{$text-color};
 		}
 
-		--r-#{$name}-color : #{color.channel($color,"red", $space: rgb)};
-		--g-#{$name}-color : #{color.channel($color,"green", $space: rgb)};
-		--b-#{$name}-color : #{color.channel($color,"blue", $space: rgb)};
+		--r-#{$name}-color : #{math.ceil(color.channel($color,"red", $space: rgb))};
+		--g-#{$name}-color : #{math.ceil(color.channel($color,"green", $space: rgb))};
+		--b-#{$name}-color : #{math.ceil(color.channel($color,"blue", $space: rgb))};
 		--a-#{$name}-color : var(--box-opacity);
 
 		--#{$name}-color : rgb(
@@ -44,9 +45,9 @@
 		}
 
 		--#{$name}-hover : 
-			#{color.channel($hover-color,"red", $space: rgb)},
-			#{color.channel($hover-color,"green", $space: rgb)},
-			#{color.channel($hover-color,"blue", $space: rgb)}
+			#{math.ceil(color.channel($hover-color,"red", $space: rgb))},
+			#{math.ceil(color.channel($hover-color,"green", $space: rgb))},
+			#{math.ceil(color.channel($hover-color,"blue", $space: rgb))}
 		;
 		
 		$active-color:white;
@@ -57,23 +58,46 @@
 		}
 
 		--#{$name}-active : 
-			#{color.channel($active-color,"red", $space: rgb)},
-			#{color.channel($active-color,"green", $space: rgb)},
-			#{color.channel($active-color,"blue", $space: rgb)}
+			#{math.ceil(color.channel($active-color,"red", $space: rgb))},
+			#{math.ceil(color.channel($active-color,"green", $space: rgb))},
+			#{math.ceil(color.channel($active-color,"blue", $space: rgb))}
 		;
 
 		@if color.channel($color,"lightness", $space: hsl) >= 50% {
-			--#{$name}-border-color : #{color.scale($color, $lightness: -40%, $space: hsl)};
+			$border-color: color.scale($color, $lightness: -40%, $space: hsl);
+			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));
+			$g-border-color: math.ceil(color.channel($border-color, "green", $space:rgb));
+			$b-border-color: math.ceil(color.channel($border-color, "blue", $space:rgb));
+				
+			@debug --#{$name}-border-color;
+			//Continue decomposing colors to round their values.
 		}@else{
-			--#{$name}-border-color : #{color.scale($color, $lightness: +40%, $space: hsl)};
+			$border-color: color.scale($color, $lightness: 40%, $space: hsl);
+			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));
+			$g-border-color: math.ceil(color.channel($border-color, "green", $space:rgb));
+			$b-border-color: math.ceil(color.channel($border-color, "blue", $space:rgb));
+			--#{$name}-border-color : rgb(#{$r-border-color $g-border-color $b-border-color });
 		}
 
 		@if color.channel($color,"lightness", $space: hsl) >= 50% {
-			--#{$name}-outline-color : #{color.scale($color, $lightness: -25%, $space: hsl)};
+			$outline-color : color.scale($color, $lightness: -25%, $space: hsl);
+			$r-outline-color: math.ceil(color.channel($outline-color, "red", $space:rgb));
+			$g-outline-color: math.ceil(color.channel($outline-color, "green", $space:rgb));
+			$b-outline-color: math.ceil(color.channel($outline-color, "blue", $space:rgb));
+			--#{$name}-outline-color : rgb(#{$r-outline-color $g-outline-color $b-outline-color})
 		}@else{
-			--#{$name}-outline-color : #{color.scale($color, $lightness: +25%, $space: hsl)};
+			$outline-color : color.scale($color, $lightness: 25%, $space: hsl);
+			$r-outline-color: math.ceil(color.channel($outline-color, "red", $space:rgb));
+			$g-outline-color: math.ceil(color.channel($outline-color, "green", $space:rgb));
+			$b-outline-color: math.ceil(color.channel($outline-color, "blue", $space:rgb));
+			--#{$name}-outline-color : rgb(#{$r-outline-color $g-outline-color $b-outline-color})
 		}
 	}
+}
+
+[class*="theme-"]{
+	background-color: var(--background-color);
+	color: var(--text-color);
 }
 
 @each $name, $color, $text-color in options.$themes{
@@ -88,8 +112,5 @@
 		--outline-color : var(--#{$name}-outline-color);
 		--background-on-hover : var(--#{$name}-hover);
 		--background-on-active : var(--#{$name}-active);
-		
-		background-color: var(--background-color);
-		color: var(--text-color);
 	}
 }
