@@ -135,10 +135,10 @@ const active_theme = ref("theme-primary");
 	
 	
 	header,footer{
-		height: 2em;
+		min-height: 2em;
 		flex-grow: 0;
 	}
 	h1{
-		height: 100%;
+		min-height: 100%;
 	}
 </style>
