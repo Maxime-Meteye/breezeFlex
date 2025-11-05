@@ -1,5 +1,5 @@
 {
-  "name": "breeze-flex",
+  "name": "breezeflex",
   "version": "1.0.0",
   "private": false,
   "type": "module",
@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
 	"build-css": "sass src/breezeflex/main.scss breezeflex.css ; sass --style=compressed src/breezeflex/main.scss breezeflex-mini.css",
-	"build-css-modules": "sass src/breezeflex/border.scss css-modules/border.css ;sass --style=compressed src/breezeflex/border.scss css-modules/border-mini.css ; sass src/breezeflex/buttons.scss css-modules/buttons.css ; sass --style=compressed src/breezeflex/buttons.scss css-modules/buttons-mini.css ;  sass src/breezeflex/grid.scss css-modules/grid.css ; sass --style=compressed src/breezeflex/grid.scss css-modules/grid-mini.css ;  sass src/breezeflex/input.scss css-modules/input.css ; sass --style=compressed src/breezeflex/input.scss css-modules/input-mini.css ;  sass src/breezeflex/margin.scss css-modules/margin.css ; sass --style=compressed src/breezeflex/margin.scss css-modules/margin-mini.css ;  sass src/breezeflex/padding.scss css-modules/padding.css ; sass --style=compressed src/breezeflex/padding.scss css-modules/padding-mini.css ;  sass src/breezeflex/shadows.scss css-modules/shadows.css ; sass --style=compressed src/breezeflex/shadows.scss css-modules/shadows-mini.css ;  sass src/breezeflex/utils.scss css-modules/utils.css ; sass --style=compressed src/breezeflex/utils.scss css-modules/utils-mini.css ;   sass src/breezeflex/theme.scss css-modules/theme.css ; sass --style=compressed src/breezeflex/theme.scss css-modules/theme-mini.css ;"
+	"build-css-modules": "sass src/breezeflex/border.scss css-modules/border.css ;sass --style=compressed src/breezeflex/border.scss css-modules/border-mini.css ; sass src/breezeflex/buttons.scss css-modules/buttons.css ; sass --style=compressed src/breezeflex/buttons.scss css-modules/buttons-mini.css ;  sass src/breezeflex/grid.scss css-modules/grid.css ; sass --style=compressed src/breezeflex/grid.scss css-modules/grid-mini.css ;  sass src/breezeflex/input.scss css-modules/input.css ; sass --style=compressed src/breezeflex/input.scss css-modules/input-mini.css ;  sass src/breezeflex/margin.scss css-modules/margin.css ; sass --style=compressed src/breezeflex/margin.scss css-modules/margin-mini.css ;  sass src/breezeflex/padding.scss css-modules/padding.css ; sass --style=compressed src/breezeflex/padding.scss css-modules/padding-mini.css ;  sass src/breezeflex/shadows.scss css-modules/shadows.css ; sass --style=compressed src/breezeflex/shadows.scss css-modules/shadows-mini.css ;  sass src/breezeflex/utils.scss css-modules/utils.css ; sass --style=compressed src/breezeflex/utils.scss css-modules/utils-mini.css ;   sass src/breezeflex/theme.scss css-modules/theme.css ; sass --style=compressed src/breezeflex/theme.scss css-modules/theme-mini.css ;",
+	"deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "vue": "^3.5.22",
