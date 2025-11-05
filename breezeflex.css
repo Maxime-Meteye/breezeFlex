@@ -23,16 +23,35 @@ body {
   min-height: 100vh;
 }
 
+:root {
+  --grid-divisions: 12;
+}
+
+.f-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .f-col, .f-row {
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .f-col > *, .f-row > * {
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+}
+
+.f-row > * {
   flex: 1;
 }
 
 .f-row {
   flex-direction: row;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .f-col {
@@ -79,6 +98,19 @@ body {
 
 [class*=row-], .row {
   grid-row: span var(--row-span, 1);
+}
+
+.f-row > [class*=col-] {
+  flex-shrink: 0;
+  flex: 0;
+  flex-basis: unset;
+  min-width: calc(100% / var(--grid-divisions) * var(--col-span));
+}
+
+.f-row > .col {
+  flex: 1;
+  flex-basis: unset;
+  min-width: auto;
 }
 
 .col-1 {
@@ -181,83 +213,6 @@ body {
   display: none;
 }
 
-@media screen and (width >= 0px) {
-  .col-xs-1 {
-    --col-span: 1;
-  }
-  .col-xs-2 {
-    --col-span: 2;
-  }
-  .col-xs-3 {
-    --col-span: 3;
-  }
-  .col-xs-4 {
-    --col-span: 4;
-  }
-  .col-xs-5 {
-    --col-span: 5;
-  }
-  .col-xs-6 {
-    --col-span: 6;
-  }
-  .col-xs-7 {
-    --col-span: 7;
-  }
-  .col-xs-8 {
-    --col-span: 8;
-  }
-  .col-xs-9 {
-    --col-span: 9;
-  }
-  .col-xs-10 {
-    --col-span: 10;
-  }
-  .col-xs-11 {
-    --col-span: 11;
-  }
-  .col-xs-12 {
-    --col-span: 12;
-  }
-  .row-xs-1 {
-    --row-span: 1;
-  }
-  .row-xs-2 {
-    --row-span: 2;
-  }
-  .row-xs-3 {
-    --row-span: 3;
-  }
-  .row-xs-4 {
-    --row-span: 4;
-  }
-  .row-xs-5 {
-    --row-span: 5;
-  }
-  .row-xs-6 {
-    --row-span: 6;
-  }
-  .row-xs-7 {
-    --row-span: 7;
-  }
-  .row-xs-8 {
-    --row-span: 8;
-  }
-  .row-xs-9 {
-    --row-span: 9;
-  }
-  .row-xs-10 {
-    --row-span: 10;
-  }
-  .row-xs-11 {
-    --row-span: 11;
-  }
-  .row-xs-12 {
-    --row-span: 12;
-  }
-  .hidden-from-xs {
-    display: none;
-  }
-}
 @media screen and (width >= 0px) and (width <= 576px) {
   .hidden-only-xs {
     display: none;
@@ -673,6 +628,33 @@ body {
     display: none;
   }
 }
+[class*=transparent-] {
+  --blur:0px;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(var(--blur));
+}
+
+.transparent-clear {
+  --blur:0px;
+}
+
+.transparent-blur-light {
+  --blur:4px;
+}
+
+.transparent-blur-heavy {
+  --blur:8px;
+}
+
+.round {
+  border-radius: 1em !important;
+}
+
+*:disabled {
+  opacity: 0.6;
+  filter: grayscale(80%) !important;
+}
+
 :root {
   --box-opacity: 1;
   --btn-default-color: #ffffff;
@@ -751,6 +733,7 @@ body {
   	29,
   	133,
   	223 ;
+  --info-border-color: rgb(23 106 179);
   --info-outline-color: rgb(29 133 223) ;
   --success-text-color: #ffffff;
   --r-success-color: 43;
@@ -825,6 +808,7 @@ body {
   	185,
   	110,
   	11 ;
+  --warning-border-color: rgb(148 88 9);
   --warning-outline-color: rgb(185 110 11) ;
   --dark-text-color: #ffffff;
   --r-dark-color: 25;
@@ -874,6 +858,7 @@ body {
   	192,
   	192,
   	192 ;
+  --light-border-color: rgb(153 153 153);
   --light-outline-color: rgb(192 192 192) ;
 }
 
@@ -991,8 +976,8 @@ body {
   border-radius: 0.5em;
   width: auto;
   height: auto;
-  min-width: 2em;
-  min-height: 1em;
+  min-width: 3em;
+  min-height: 2em;
   padding: 1px 6px;
   background-color: var(--background-color);
   border: var(--border, solid 2px var(--border-color, var(--btn-default-border-color)));
@@ -2215,8 +2200,8 @@ label.row  .input{
   border-radius: 0.5em;
   width: auto;
   height: auto;
-  min-width: 2em;
-  min-height: 1em;
+  min-width: 3em;
+  min-height: 2em;
   padding: 1px 6px;
   background-color: var(--background-color);
   border: var(--border, solid 2px var(--border-color, var(--btn-default-border-color)));
@@ -2406,33 +2391,6 @@ select.input {
 
 select.input :hover {
   background-color: var(--background-on-hover);
-}
-
-[class*=transparent-] {
-  --blur:0px;
-  background-color: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(var(--blur));
-}
-
-.transparent-clear {
-  --blur:0px;
-}
-
-.transparent-blur-light {
-  --blur:4px;
-}
-
-.transparent-blur-heavy {
-  --blur:8px;
-}
-
-.round {
-  border-radius: 1em;
-}
-
-*:disabled {
-  opacity: 0.6;
-  filter: grayscale(80%) !important;
 }
 
 /*# sourceMappingURL=breezeflex.css.map */

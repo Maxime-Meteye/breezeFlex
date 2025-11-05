@@ -68,6 +68,7 @@
 			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));
 			$g-border-color: math.ceil(color.channel($border-color, "green", $space:rgb));
 			$b-border-color: math.ceil(color.channel($border-color, "blue", $space:rgb));
+			--#{$name}-border-color : rgb(#{$r-border-color $g-border-color $b-border-color });
 		}@else{
 			$border-color: color.scale($color, $lightness: 40%, $space: hsl);
 			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));

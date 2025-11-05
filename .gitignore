@@ -15,7 +15,8 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
-pnpm-lock.yaml
+*.yaml
+dist/*
 
 # Editor directories and files
 .vscode/*

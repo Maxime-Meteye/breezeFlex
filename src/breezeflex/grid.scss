@@ -1,19 +1,40 @@
 @use 'user_options/user_options' as options;
 
+:root{
+	--grid-divisions : #{options.$col_max_amount};
+}
+
+.f-container{
+	display: flex;
+	flex-direction: column;
+}
+
 .f-col,.f-row{
 	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
 }
 
 .f-col > *,.f-row > *{
+	flex: 1;
+	flex-shrink: 1;
+	flex-basis: 100%;
+
+}
+
+.f-row >*{
 	flex: 1;
 }
 
 .f-row{
 	flex-direction: row;
+	flex-grow: 1;
+	flex-shrink: 1;
 }
 .f-col{
 	flex-direction: column;
 }
+
 
 .grow-none{
 	flex:0;
@@ -51,6 +72,17 @@
 
 [class*="row-"],.row{
 	grid-row: span var(--row-span,1);
+}
+.f-row >[class*="col-"]{
+	flex-shrink: 0;
+	flex: 0;
+	flex-basis: unset;
+	min-width: calc( ((100% / var(--grid-divisions)) * var(--col-span)));
+}
+.f-row >.col{
+	flex: 1;
+	flex-basis: unset;
+	min-width: auto;
 }
 
 
@@ -98,14 +130,16 @@
 }
 
 @each $name, $size, $max_size in options.$sizes{
-	@media screen and (width >= $size) {
+	@if $size != 0px{
+		@media screen and (width >= $size) {
 
-		@include col-gen($name);
+			@include col-gen($name);
 
-		@include row-gen($name);
+			@include row-gen($name);
 
-		.hidden-from-#{$name} {
-			@include hidden();
+			.hidden-from-#{$name} {
+				@include hidden();
+			}
 		}
 	}
 	@media screen and (width >= $size) and (width <= $max_size) {
