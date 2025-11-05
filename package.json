@@ -1,7 +1,7 @@
 {
-  "name": "css_framework",
-  "version": "0.0.0",
-  "private": true,
+  "name": "breeze-flex",
+  "version": "1.0.0",
+  "private": false,
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"

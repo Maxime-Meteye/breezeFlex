@@ -4,6 +4,7 @@
 
 :root{
 	--initial-outline-width : #{options.$initial-outline-width};
+	--outline-width : 0.2em;
 }
 
 @mixin input(){
@@ -59,7 +60,7 @@ label.row  .input{
 .outline-on-select:focus-visible,
 .outline-on-checked:checked,
 .outline-on-checked:hover{
-	outline: var(--outline-color) var(--border-style) var(--border-width);
+	outline: var(--outline-color) var(--border-style) var(--outline-width);
 }
 
 .no-border-change:focus-visible{
@@ -176,11 +177,6 @@ label.row  .input{
 	width: 4em ;
 	-webkit-appearance: textfield;
 	appearance: textfield;
-}
-
-
-label:has(.input[type="radio" i]){
-	align-items: revert;
 }
 
 .input[type="radio" i]{

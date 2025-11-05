@@ -68,9 +68,6 @@
 			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));
 			$g-border-color: math.ceil(color.channel($border-color, "green", $space:rgb));
 			$b-border-color: math.ceil(color.channel($border-color, "blue", $space:rgb));
-				
-			@debug --#{$name}-border-color;
-			//Continue decomposing colors to round their values.
 		}@else{
 			$border-color: color.scale($color, $lightness: 40%, $space: hsl);
 			$r-border-color: math.ceil(color.channel($border-color, "red", $space:rgb));

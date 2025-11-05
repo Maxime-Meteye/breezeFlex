@@ -19,4 +19,13 @@ const is_menu_open = ref(false)
 
 
 </script>
-<style scoped></style>
+<style scoped>
+	main{
+		height: 100vh;
+		
+	}
+	main > div{
+			height: 100%;
+	}
+
+</style>

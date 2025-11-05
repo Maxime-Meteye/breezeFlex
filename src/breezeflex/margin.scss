@@ -10,10 +10,10 @@
 
 @each $name, $margin in options.$spacing{
 
-	.x-gap-#{$name}{
+	.gap-x-#{$name}{
 		column-gap: var(--margin-#{$name});
 	}
-	.y-gap-#{$name}{
+	.gap-y-#{$name}{
 		row-gap: var(--margin-#{$name});
 	}
 

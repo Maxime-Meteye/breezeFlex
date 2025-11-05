@@ -1,5 +1,43 @@
 @use 'user_options/user_options' as options;
 
+.f-col,.f-row{
+	display: flex;
+}
+
+.f-col > *,.f-row > *{
+	flex: 1;
+}
+
+.f-row{
+	flex-direction: row;
+}
+.f-col{
+	flex-direction: column;
+}
+
+.grow-none{
+	flex:0;
+}
+
+.align-content-center{
+	align-content: center;
+}
+.align-content-left{
+	align-content: left;
+}
+.align-content-right{
+	align-content: right;
+}
+.justify-content-center{
+	justify-content: center;
+}
+.justify-content-left{
+	justify-content: left;
+}
+.justify-content-right{
+	justify-content: right;
+}
+
 
 .container{
 	display: grid;
@@ -9,7 +47,6 @@
 
 [class*="col-"],.col{
 	grid-column: span var(--col-span,1);
-	border: red solid 1px;
 }
 
 [class*="row-"],.row{
@@ -77,5 +114,3 @@
 		}
 	}
 }
-
-//TODO add visible from

@@ -2,13 +2,4 @@
 
 
 
-/*BUG if for some reason $themes is defined like so :
-\$themes:(
-	"primary" #FFE4C4
-);
-
-utils.text-color.maker is passed null
-*/
-
-
 @forward '../options.scss'
