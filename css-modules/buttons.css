@@ -345,7 +345,7 @@
   color: var(--text-color);
   border-radius: 0.5em;
   width: auto;
-  height: auto;
+  height: 3em;
   min-width: 3em;
   min-height: 2em;
   padding: 1px 6px;

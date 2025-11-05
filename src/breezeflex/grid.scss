@@ -1,3 +1,4 @@
+//© 2025 Maxime Météyé — Released under the MIT License
 @use 'user_options/user_options' as options;
 
 :root{
@@ -37,7 +38,7 @@
 
 
 .grow-none{
-	flex:0;
+	flex-grow: 0;
 }
 
 .align-content-center{
@@ -65,6 +66,7 @@
 	grid-template-columns: repeat(options.$col_max_amount,minmax(0, 1fr));
 	grid-template-rows: repeat(options.$col_max_amount,minmax(0, 1fr));
 }
+
 
 [class*="col-"],.col{
 	grid-column: span var(--col-span,1);

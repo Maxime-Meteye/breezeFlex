@@ -1,3 +1,5 @@
+@charset "UTF-8";
+/*© 2025 Maxime Météyé — Released under the MIT License*/
 * {
   margin: 0;
   padding: 0;
@@ -59,7 +61,7 @@ body {
 }
 
 .grow-none {
-  flex: 0;
+  flex-grow: 0;
 }
 
 .align-content-center {
@@ -975,7 +977,7 @@ body {
   color: var(--text-color);
   border-radius: 0.5em;
   width: auto;
-  height: auto;
+  height: 3em;
   min-width: 3em;
   min-height: 2em;
   padding: 1px 6px;
@@ -2199,7 +2201,7 @@ label.row  .input{
   color: var(--text-color);
   border-radius: 0.5em;
   width: auto;
-  height: auto;
+  height: 3em;
   min-width: 3em;
   min-height: 2em;
   padding: 1px 6px;

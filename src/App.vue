@@ -1,8 +1,10 @@
 <template>
-<main :class="active_theme" class="padding-inline-l">
-    <div>
-        <h1>Breezeflex</h1>
-		<section class="container align-content-center">
+<div class="f-container ">
+	<header class="f-row">
+		<h1 class="theme-info align-content-center">Breezeflex</h1>
+	</header>
+	<main :class="active_theme" class="f-row">
+		<section class="container align-content-center padding-inline-m">
 			<div class="container col-12 row-2">
 				<div class="col-12 row-3 border-xs border-all">col-12/row-3</div>
 				<div class="col-3 row-6 hidden-only-xs hidden-only-s border-xs border-all">col-3/row-6</div>
@@ -22,8 +24,8 @@
 				</div>
 				<div class="f-row border-xs border-all">flex</div>
 			</div>
-			<div class="padding-block-xs col-12 row-3 row-m-1 align-content-center f-container">
-				<div class="f-row gap-x-m">
+			<div class="padding-block-xs col-12 row-1 align-content-center f-container">
+				<div class="f-row gap-x-m grow-none">
 					<button class="btn primary-tint btn-hover-transparent btn-primary" @click=" active_theme = 'theme-primary'" >primary</button>
 					<button class="btn btn-secondary" @click=" active_theme = 'theme-secondary'">secondary</button>
 					<button class="btn-round btn-info shadow-xs" @click=" active_theme = 'theme-info'">info</button>
@@ -119,8 +121,9 @@
 				</form>
 			</div>
 		</section>
-    </div>
-</main>
+	</main>
+	<footer class=" f-row theme-info align-content-center justify-content-center">© 2025 Maxime Météyé — Released under the MIT License</footer>
+</div>
 </template>
 <script setup>
 
@@ -129,16 +132,13 @@ const active_theme = ref("theme-primary");
 
 </script>
 <style scoped>
-	main{
-		height: 100vh;
-		
+	
+	
+	header,footer{
+		height: 2em;
+		flex-grow: 0;
 	}
-	main > div{
+	h1{
 		height: 100%;
 	}
-
-	section{
-		height: 100%;
-	}
-
 </style>
