@@ -15,7 +15,6 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
-*.yaml
 
 # Editor directories and files
 .vscode/*
