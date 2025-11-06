@@ -18,7 +18,7 @@ Breezeflex is a css framework taking inspiration from bootstrap.
 - Borders
 
 ## Demo
-You can see BreezeFlex in action [here] (https://maxime-meteye.github.io/breezeFlex/)  
+You can see BreezeFlex in action [here](https://maxime-meteye.github.io/breezeFlex/)  
 For now this page includes only a demonstration of some features. It will be changed to a full documentation at a later date.
 
 ## Customisation
