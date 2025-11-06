@@ -1,38 +1,64 @@
-# css_framework
+# BreezeFlex  
 
-This template should help get you started developing with Vue 3 in Vite.
+##Presentation  
 
-## Recommended IDE Setup
+Breezeflex is a css framework taking inspiration from bootstrap.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+##Features  
+- 40kb
+- Flexgrid positionning
+- Grid positionning
+- Themes
+- Buttons
+- Inputs
+- Margins
+- Paddings
+- Shadows
+- Breakpoints
+- Borders
 
-## Recommended Browser Setup
+## Demo
+You can see BreezeFlex in action [here] (https://maxime-meteye.github.io/breezeFlex/)  
+For now this page includes only a demonstration of some features. It will be changed to a full documentation at a later date.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Customisation
 
-## Customize configuration
+Css only users can rewrite mostly the same variables Scss users can.
+To do that just import your stylesheet after BreezeFlex.
+Then rewrite root variables.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+This would turn the background color of the primary theme white.
+``
+  :root{
+    --r-primary-color:250;
+    --g-primary-color:250;
+    --b-primary-color:250;
+  }
+``
+Scss users can override config variables by reassigning them inside src/breezeflex/user_options/user_options.scss
+For instance declaring this inside user_options.scss :
+``
+  $themes : (
+    "foo" #fff,
+    "bar" #f00 #0f0
+  )
+``
+Would make BreezeFlex generate two themes,  
+one named foo deriving from the color #fff with border, hover, and active colors constratsting with it. It would also pick automatically whether black or white text to ensure readibility.
+The second would be bar deriving from the color #f00 with border, hover, and active colors constratsting with it. But the text color would be #0f0.
 
-## Project Setup
+In this situation. Breezeflex would generate the following classes :
+- theme-foo
+- theme-bar
+- btn-foo
+- btn-bar
 
-```sh
-pnpm install
-```
+Always keep in mind that for now customising through scss overrides breezeflex options. It doesn't add your parameters on top of the default.
 
-### Compile and Hot-Reload for Development
+## Notes
+The project still needs some polishing : 
+- Variables names could come of as repetitive
+- The stylesheet could probably be lightened, for now 40kb is pretty heavy for what BreezeFlex brings to the table.
+- Some QOL in regards to customisation would probably be appreciated. Particularly in regards of themes. For instance overriding border colors can only be done in css.
 
-```sh
-pnpm dev
-```
-
-### Compile and Minify for Production
-
-```sh
-pnpm build
-```
+I made it not because I wanted the bootstrap or tailwind killer, but because I wanted to get a little bit more familiar with css and sass. Hence why the documentation is not included as part of the 1.0.0 release.
