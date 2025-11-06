@@ -1,10 +1,10 @@
 # BreezeFlex  
 
-##Presentation  
+## Presentation  
 
 Breezeflex is a css framework taking inspiration from bootstrap.
 
-##Features  
+## Features  
 - 40kb
 - Flexgrid positionning
 - Grid positionning
@@ -28,21 +28,21 @@ To do that just import your stylesheet after BreezeFlex.
 Then rewrite root variables.
 
 This would turn the background color of the primary theme white.
-``
+``` css
   :root{
     --r-primary-color:250;
     --g-primary-color:250;
     --b-primary-color:250;
   }
-``
+```
 Scss users can override config variables by reassigning them inside src/breezeflex/user_options/user_options.scss
 For instance declaring this inside user_options.scss :
-``
+``` scss
   $themes : (
     "foo" #fff,
     "bar" #f00 #0f0
   )
-``
+```
 Would make BreezeFlex generate two themes,  
 one named foo deriving from the color #fff with border, hover, and active colors constratsting with it. It would also pick automatically whether black or white text to ensure readibility.
 The second would be bar deriving from the color #f00 with border, hover, and active colors constratsting with it. But the text color would be #0f0.
